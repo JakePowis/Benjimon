@@ -6,7 +6,7 @@ export function Attack ({player, setPlayer, enemy, setEnemy}) {
 
     const playerAttack = () => {
         let playerDam = Math.floor(10 + Math.random() * 20)
-        setEnemy((enemy) => enemy.hp = enemy.hp - playerDam)
+        setEnemy((enemy) => ({...enemy, hp: enemy.hp - playerDam}))
         console.log("player attack", enemy, player)
         setPlayerturn(!playerturn)
         return
@@ -14,11 +14,10 @@ export function Attack ({player, setPlayer, enemy, setEnemy}) {
 
     const enemyAttack = () => {
         let enemyDam = Math.floor(10 + Math.random() * 20)
-        setPlayer((player) => player.hp = player.hp - enemyDam)
+        setPlayer((player) => ({...player, hp: player.hp - enemyDam}))
         setPlayerturn(!playerturn)
         console.log("enemy attack", enemy, player);
         return
-
     }
 
     return (

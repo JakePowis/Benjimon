@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="App">
-      <Pokemon />
+      <Pokemon hp={player.hp}/>
       <UserData hp={enemy.hp} />
       <Attack player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy}/>
       {/* <Flee player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy}/> */}

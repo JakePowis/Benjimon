@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {getPokemon} from '../utils/utils'
 
-function Pokemon() {
+function Pokemon({hp}) {
     const [data, setData] = useState(()=> {
-        return ""
+      return ""
     })
-    
+
     const name = 'pikachu'
 
     useEffect(()=> {
@@ -20,6 +20,7 @@ function Pokemon() {
             src={data.sprites.front_default}
             alt={`${data.name} default sprite`}
           />
+          <h2>{hp}</h2>
         </div>
       );
   }

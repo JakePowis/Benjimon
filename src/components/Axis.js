@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {getUserData} from '../utils/utils'
+import img from '../../src/logo.svg'
 
 function UserData ({hp}) {
     const [user, setUser] = useState(()=> {
@@ -16,7 +17,8 @@ function UserData ({hp}) {
             <ul>
                 <li>{login}</li>
                 <li>{hp}</li>
-                <img alt="axis" src={avatar_url} />
+                {avatar_url?<img alt="axis" src={avatar_url}/> : <div>loading</div> }
+                
             </ul>
         </div>
     )
