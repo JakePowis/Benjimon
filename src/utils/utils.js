@@ -14,10 +14,10 @@ export function getPokemon(name) {
       })
   }
 
-const token = process.env.ACCESS_TOKEN;
+const token = process.env.REACT_APP_KEY;
 
 export const getUserData = () => {
-    return fetch(`https://api.github.com/orgs/webahead5/members?access_token=157e4efd2e6ceed30176431b660c8e75b4868407`)
+    return fetch(`https://api.github.com/orgs/webahead5/members?access_token=${token}`)
     .then(checkResponse)
     .catch(err => {
         throw new Error(`fetch getUserData failed ${err}`)
