@@ -13,7 +13,7 @@ const StartScreen = ({ setPlayer, setGameState, gameState, player }) => {
     })
 
     const handleSubmit = e => {
-      console.log('i have faith')
+        console.log('i have faith')
         if (!value) return;
         setPlayer((player) => ({ ...player, name: value }))
         setGameState((gameState) => ({ ...gameState, gameState: "fight" }))
@@ -24,16 +24,16 @@ const StartScreen = ({ setPlayer, setGameState, gameState, player }) => {
     return (
         <fieldset>
             <legend>Pick Pokemon to start</legend>
-            
-                <label htmlFor="pokemon-name">Choose Pokemon</label>
-                <select className="choose-pokemon-input" onChange={e=> setValue(e.target.value)}>
+
+            <label htmlFor="pokemon-name">Choose Pokemon</label>
+            <select className="choose-pokemon-input" onChange={e => setValue(e.target.value)}>
                 <option >Select</option>
-                    {suggestion.map((pokemon, index) => (
-                        <option value={pokemon.toLowerCase()} key={index}>{pokemon}</option>
-                    ))}
-                </select>
-                <button type="submit" value="Submit" onClick={handleSubmit}>Start</button>
-           
+                {suggestion.map((pokemon, index) => (
+                    <option value={pokemon.toLowerCase()} key={index}>{pokemon}</option>
+                ))}
+            </select>
+            <button type="submit" value="Submit" onClick={handleSubmit}>Start</button>
+
         </fieldset>
     )
 }
