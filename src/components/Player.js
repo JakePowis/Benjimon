@@ -7,17 +7,24 @@ function Player({ player, setPlayer, enemy, setEnemy, playerTurn }) {
     return ""
   })
 
-
   useEffect(() => {
-    getPokemon(player.name).then((data) => setData(data))
-  }, [player])
+    getPokemon(player.name).then((data) => {
+      setData(data)
+      setPlayer(()=> ({...player, avatar_url: data.sprites.front_default}) )
+    })
+  }, [])
 
 
   console.log("Player TURN", playerTurn)
 
   if (!data) return <div>Loading...</div>;
-  return (
 
+  return (
+    <div id="player-container">
+      <div className="pokemon-display">
+        <img className={"enemy-pokemon " + (playerTurn ? "hit" : "playeratk")} src={data.sprites.back_default} alt={`${data.name} default sprite`} />
+  if (!data) return <div>Loading...</div>;
+  return (
 
     <div id="player-container">
       <div className="pokemon-display">
@@ -37,7 +44,6 @@ function Player({ player, setPlayer, enemy, setEnemy, playerTurn }) {
         </div>
       </div>
     </div>
-
   );
 }
 

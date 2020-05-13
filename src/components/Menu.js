@@ -106,7 +106,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
     }
 
     useEffect(() => {
-        gameOverCheck(gameState, setGameState, player, enemy, setPlayer, setEnemy, winner, setWinner)
+        gameOverCheck({gameState, setGameState, player, enemy, setPlayer, setEnemy, winner, setWinner})
     }, [player, enemy]);
 
 
