@@ -5,7 +5,7 @@ import GameState from './components/GameState'
 import { Attack } from './components/Menu'
 import { Flee } from './components/Menu'
 import KoScreen from './components/KO'
-// import StartScreen from './components/StartScreen'
+import StartScreen from './components/StartScreen'
 import './App.css';
 
 
