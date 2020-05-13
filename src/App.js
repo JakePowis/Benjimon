@@ -4,6 +4,7 @@ import Enemy from './components/Enemy'
 import GameState from './components/GameState'
 import { Attack } from './components/Menu'
 import { Flee } from './components/Menu'
+import KoScreen from './components/KO'
 import './App.css';
 
 
@@ -27,8 +28,10 @@ function App() {
   const [winner, setWinner] = React.useState(null)
   const props = { player, setPlayer, enemy, setEnemy }
 
-    const game = gameState.gameState
+    var game = gameState.gameState //FIXME
     const round = gameState.round
+
+    game="gameover" //FIXME
 
   return (
     <div className="App">
@@ -46,7 +49,7 @@ function App() {
                   <Attack {...props} gameState={gameState} setGameState={setGameState} setWinner={setWinner} />
               </React.Fragment>
                     :  //gameOver
-                    <gameOverScreen />}
+                    <KoScreen {...props} />}
                 
     
           {/* <GameState gameState={gameState} winner={winner} setWinner={setWinner} /> */}
