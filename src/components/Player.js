@@ -7,38 +7,45 @@ function Player({ player, setPlayer, enemy, setEnemy, playerTurn }) {
     return ""
   })
 
-
   useEffect(() => {
-    getPokemon(player.name).then((data) => setData(data))
-  }, [player])
+    getPokemon(player.name).then((data) => {
+      setData(data)
+      setPlayer(()=> ({...player, avatar_url: data.sprites.front_default}) )
+    })
+  }, [])
+
+
+  // setPlayer(()=> ({...player, avatar_url: data.sprites.back_default}) )
+
+  // console.log("player data is: ", player.avatar_url);
+
+  // setPlayer({...player, avatar_url: data.sprites.back_default})
+  // console.log("player data is: ", player.avatar_url);
+
+  //setPlayer(()=> ({...player, avatar_url: data.sprites.back_default}) )
 
 
   console.log("Player TURN", playerTurn)
 
   if (!data) return <div>Loading...</div>;
+
   return (
-    
-
-      <div id="player-container">
-        <div className="pokemon-display">
-
-
-          <img className={"enemy-pokemon " + (playerTurn ? "hit" : "playeratk")} src={data.sprites.back_default} alt={`${data.name} default sprite`} />
-
-          <div className="grey-oval"></div>
+    <div id="player-container">
+      <div className="pokemon-display">
+        <img className={"enemy-pokemon " + (playerTurn ? "hit" : "playeratk")} src={data.sprites.back_default} alt={`${data.name} default sprite`} />
+        <div className="grey-oval"></div>
+      </div>
+      <div className="character-stats">
+        <div className="name-level">
+          <h2 className="name">{data.name}</h2>
+          <h2>Lv10</h2>
         </div>
-        <div className="character-stats">
-          <div className="name-level">
-            <h2 className="name">{data.name}</h2>
-            <h2>Lv10</h2>
-          </div>
-          <div className="bar">
-            HP<progress value={player.hp} max="100">0%</progress>
-            <h5>{player.hp}/100</h5>
-          </div>
+        <div className="bar">
+          HP<progress value={player.hp} max="100">0%</progress>
+          <h5>{player.hp}/100</h5>
         </div>
-      </div> 
-     
+      </div>
+    </div>
   );
 }
 

@@ -17,7 +17,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
 
     const enemyAttack = () => {
         //animate
-        let enemyDam = Math.floor(10 + Math.random() * 20)
+        let enemyDam = Math.floor(10 + Math.random() * 200)
         let remainingHp = player.hp - enemyDam
         setPlayer((player) => ({ ...player, hp: remainingHp < 0 ? 0 : remainingHp }))
         setPlayerTurn(!playerTurn)
@@ -26,7 +26,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
     }
 
     useEffect(() => {
-        gameOverCheck(gameState, setGameState, player, enemy, setPlayer, setEnemy, winner, setWinner)
+        gameOverCheck({gameState, setGameState, player, enemy, setPlayer, setEnemy, winner, setWinner})
     }, [player, enemy]);
 
 

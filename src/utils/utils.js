@@ -27,7 +27,7 @@ export const getUserData = () => {
 };
 
 
-export const gameOverCheck = (gameState, setGameState, player, enemy, setWinner) => {
+export const gameOverCheck = ({gameState, setGameState, player, enemy, setWinner}) => {
   console.log("HP", enemy.hp, "MY HP", player.hp)
 
 
