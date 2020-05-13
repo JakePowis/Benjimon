@@ -23,7 +23,7 @@ function Player({ player, setPlayer, enemy, setEnemy, playerTurn }) {
         <div className="pokemon-display">
 
 
-          <img className={"enemy-pokemon " + (playerTurn ? "hit" : "playeratk")} src={data.sprites.back_default} alt={`${data.name} default sprite`} />
+          <img className={"enemy-pokemon " + (playerTurn ? "hit" : "playeratk")} src={data.sprites.back_default? data.sprites.back_default : data.sprites.front_default } alt={`${data.name} default sprite`} />
 
           <div className="grey-oval"></div>
         </div>
