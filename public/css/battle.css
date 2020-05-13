@@ -1,6 +1,7 @@
 @font-face {
     font-family: PokemonGB;
     src: url(../assets/fonts/PokemonGB.ttf);
+    src: url(../PokemonGB.ttf);
 }
 
 body {
@@ -27,6 +28,11 @@ h3 {
     margin-left: 30px;
     cursor: pointer;
 }
+
+h3:hover {
+   color:rgba(128, 128, 128, 0.746)
+}
+
 
 div#game-container {
     display: flex;

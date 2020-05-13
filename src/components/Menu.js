@@ -3,7 +3,7 @@ import { gameOverCheck } from "../utils/utils"
 import playerSound from "../assets/sound/SFX_SHOOTING_STAR.wav"
 import enemySound from "../assets/sound/SFX_INTRO_WHOOSH.wav"
 import hitSound from "../assets/sound/SFX_CUT.wav"
-import superSound from "../assets/sound/SFX_SHOOTING_STAR.wav"
+import superSound from "../assets/sound/super.wav"
 import battleMusic from "../assets/sound/battle.mp3"
 
 export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameState, winner, setWinner, playerTurn, setPlayerTurn }) {
@@ -36,7 +36,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
             setTimeout(() => hit.play(), 1100)
         }
         else if (person === "super") {
-            audio = new Audio(playerSound) //change to good sound
+            audio = new Audio(superSound) //change to good sound
             setTimeout(() => {
                 hit.play()
                 setTimeout(() => hit.play(), 800)
@@ -98,7 +98,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
         if (mute) attackSound("enemy")
         setPlayerTurn(!playerTurn)
         setTimeout(() => {
-            let enemyDam = Math.floor(10 + Math.random() * 20)
+            let enemyDam = Math.floor(15 + Math.random() * 15)
             let remainingHp = player.hp - enemyDam
             setMenu(true)
             setPlayer((player) => ({ ...player, hp: remainingHp < 0 ? 0 : remainingHp }))
@@ -106,7 +106,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
     }
 
     useEffect(() => {
-        gameOverCheck({gameState, setGameState, player, enemy, setPlayer, setEnemy, winner, setWinner})
+        gameOverCheck({ gameState, setGameState, player, enemy, setPlayer, setEnemy, winner, setWinner })
     }, [player, enemy]);
 
 
@@ -130,7 +130,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
                         setGameState({ ...gameState, gameState: "start" })
                         setPlayer({ ...player, hp: 100 })
                         setEnemy({ ...enemy, hp: 100 })
-                    } > RUN</h3>
+                    }}> RUN</h3>
                 </div>
             </div>
         </div >
