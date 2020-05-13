@@ -6,12 +6,14 @@ import hitSound from "../assets/sound/SFX_CUT.wav"
 import superSound from "../assets/sound/super.wav"
 import battleMusic from "../assets/sound/battle.mp3"
 
-export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameState, winner, setWinner, playerTurn, setPlayerTurn }) {
+export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameState, winner, setWinner, playerTurn, setPlayerTurn, spr, setSpr }) {
 
 
     const [mute, setMute] = useState("false")
     const [menu, setMenu] = useState("false")
-    const [spr, setSpr] = useState("ready") //state for super
+
+    let playerDam = ""
+
 
     let battleAudio = new Audio(battleMusic)
 
@@ -39,7 +41,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
             audio = new Audio(superSound) //change to good sound
             setTimeout(() => {
                 hit.play()
-                setTimeout(() => hit.play(), 150)
+                setTimeout(() => hit.play(), 400)
             }, 600) // fix set time out call back
 
             console.log("SUPPER HITTT")
@@ -85,8 +87,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
         setSpr("used")
         setPlayerTurn(!playerTurn)
         setTimeout(() => {
-            let playerDam = ""
-            playerDam = Math.floor(30 + Math.random() * 10)
+            let playerDam = Math.floor(30 + Math.random() * 10)
             let remainingHp = enemy.hp - playerDam
             let hit = new Audio(hitSound)
             hit.play() //extra hit
@@ -133,6 +134,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
                         setPlayer({ ...player, hp: 100 })
                         setEnemy({ ...enemy, hp: 100 })
                         setPlayerTurn(true)
+                        setSpr("ready")
                     }}> RUN</h3>
                 </div>
             </div>

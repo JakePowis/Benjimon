@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getUserData } from '../utils/utils'
 
-function Enemy({ player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn }) {
+function Enemy({ player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, spr, setSpr }) {
 
 
     const [user, setUser] = useState(() => {
@@ -36,7 +36,7 @@ function Enemy({ player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn }
                     <h5><span className={enemy.hp > 60 ? "" : enemy.hp > 30 ? "yellow" : "red"}>{enemy.hp}</span>/100</h5>
                 </div>
             </div>
-            <div className="pokemon-display">
+            <div className={"pokemon-display " + (spr === "used" ? "spr" : "")}>
                 <img className={"enemy-pokemon " + (!playerTurn ? "hit" : "enemyatk")} src={avatar_url} />
                 <div className="grey-oval"></div>
             </div>

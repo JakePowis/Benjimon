@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getPokemon } from '../utils/utils'
 
 
-function Player({ player, setPlayer, enemy, setEnemy, playerTurn }) {
+function Player({ player, setPlayer, enemy, setEnemy, playerTurn, spr, setSpr }) {
   const [data, setData] = useState(() => {
     return ""
   })
@@ -22,7 +22,7 @@ function Player({ player, setPlayer, enemy, setEnemy, playerTurn }) {
   return (
 
     <div id="player-container">
-      <div className="pokemon-display">
+      <div className={"pokemon-display " + (spr === "used" ? "sprAtk" : "")}>
 
         <img className={"player " + (playerTurn ? "hit" : "playeratk")} src={data.sprites.back_default ? data.sprites.back_default : data.sprites.front_default} alt={`${data.name} default sprite`} />
 
