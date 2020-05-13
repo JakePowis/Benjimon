@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AutoComplete from './Suggestion'
+// import AutoComplete from './Suggestion'
 
 
 const StartScreen = ({ setPlayer, setGameState, gameState, player }) => {
@@ -27,7 +27,7 @@ const StartScreen = ({ setPlayer, setGameState, gameState, player }) => {
             
                 <label htmlFor="pokemon-name">Choose Pokemon</label>
                 <select className="choose-pokemon-input" onChange={e=> setValue(e.target.value)}>
-                <option disabled="disabled" selected="selected">Select</option>
+                <option >Select</option>
                     {suggestion.map((pokemon, index) => (
                         <option value={pokemon.toLowerCase()} key={index}>{pokemon}</option>
                     ))}
