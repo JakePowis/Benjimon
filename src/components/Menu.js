@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { gameOverCheck } from "../utils/utils"
 
-export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameState, winner, setWinner }) {
+export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameState, winner, setWinner, playerTurn, setPlayerTurn }) {
 
-    const [playerturn, setPlayerturn] = useState(true)
+
 
     const playerAttack = () => {
+        //animate
         let playerDam = Math.floor(10 + Math.random() * 20)
         let remainingHp = enemy.hp - playerDam
         setEnemy((enemy) => ({ ...enemy, hp: remainingHp < 0 ? 0 : remainingHp }))
         console.log("player attack", enemy, player)
-        setPlayerturn(!playerturn)
+        setPlayerTurn(!playerTurn)
 
     }
 
     const enemyAttack = () => {
+        //animate
         let enemyDam = Math.floor(10 + Math.random() * 20)
         let remainingHp = player.hp - enemyDam
         setPlayer((player) => ({ ...player, hp: remainingHp < 0 ? 0 : remainingHp }))
-        setPlayerturn(!playerturn)
+        setPlayerTurn(!playerTurn)
         console.log("enemy attack", enemy, player);
 
     }
@@ -35,13 +37,13 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
             <div className="left-menu">
                 <div className="yellow-menu">
                     <div className="inner-menu">
-                        <p id="menu-prompt">What will PLAYERNAME do?</p>
+                        <p id="menu-prompt">{playerTurn ? <span>What will {player.name} do?</span> : <span>{enemy.name} is ATTACKING!</span>} </p>
                     </div>
                 </div>
             </div>
             <div className="fight-menu">
                 <div className="right-menu">
-                    <h3 onClick={playerturn ? playerAttack : enemyAttack}>{playerturn ? "ATTACK" : "DEFEND"}</h3>
+                    <h3 onClick={playerTurn ? playerAttack : enemyAttack}>{playerTurn ? "ATTACK" : "DEFEND"}</h3>
                     <h3 >RUN</h3>
                     <h3 >UNUSED</h3>
                     <h3 >UNUSED</h3>

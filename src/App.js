@@ -5,6 +5,7 @@ import GameState from './components/GameState'
 import { Attack } from './components/Menu'
 import { Flee } from './components/Menu'
 import KoScreen from './components/KO'
+import StartScreen from './components/StartScreen'
 import './App.css';
 
 
@@ -13,25 +14,26 @@ function App() {
 
   const [player, setPlayer] = React.useState({
     hp: 100,
-    name: "pokemon"
+    name: "pikachu"
   })
   const [enemy, setEnemy] = React.useState({
     hp: 100,
     name: "enemy"
   })
 
+  const [playerTurn, setPlayerTurn] = React.useState(true)
+
   const [gameState, setGameState] = React.useState({
-    gameState: "fight", //start, fight, gameover
+    gameState: "gameover", //start, fight, gameover
     round: 1,
   })
-
+  console.log(gameState)
+ 
   const [winner, setWinner] = React.useState(null)
-  const props = { player, setPlayer, enemy, setEnemy }
+  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn }
 
-    var game = gameState.gameState //FIXME
-    const round = gameState.round
-
-    game="gameover" //FIXME
+  const game = gameState.gameState
+  const round = gameState.round
 
   return (
     <div className="App">
@@ -40,14 +42,16 @@ function App() {
 
         {game === "start" ?
                 
-                <startScreen />
+                <StartScreen setPlayer={setPlayer} player={player} setGameState={setGameState} gameState={gameState}/>
 
-                : game === "fight" ?
-                <React.Fragment >
-                  <Enemy {...props} />
-                  <Player {...props} />
-                  <Attack {...props} gameState={gameState} setGameState={setGameState} setWinner={setWinner} />
+
+            : game === "fight" ?
+              <React.Fragment >
+                <Enemy {...props} />
+                <Player {...props} />
+                <Attack {...props} gameState={gameState} setGameState={setGameState} setWinner={setWinner} />
               </React.Fragment>
+
                     :  //gameOver
                     <KoScreen {...props} />}
                 
