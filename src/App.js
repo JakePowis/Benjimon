@@ -22,6 +22,7 @@ function App() {
     <div className="App">
            <div id="game-container">
         <div id="battle-container">
+          
         <Enemy player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy} />
           
           <Player player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy} />

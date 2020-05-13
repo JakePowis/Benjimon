@@ -5,15 +5,41 @@ function Player({player, setPlayer, enemy, setEnemy}) {
     const [data, setData] = useState(()=> {
         return ""
     })
+
+    const [name, setName] = useState(()=> {
+      return "pikachu"
+    })
+    const [value, setValue] = useState('')
     
-    const name = 'pikachu'
+    const handleSubmit = e => {
+      e.preventDefault()
+      if(!value) return;
+      addName(value)
+      setValue('')
+    }
+
+    const addName = name => {
+      setName(name)
+    }
 
     useEffect(()=> {
       getPokemon(name).then((data)=> setData(data))
-    }, [])
+    }, [name])
     
+    
+
     if (!data) return <div>Loading...</div>;
       return (
+        <div>
+          {name ? <form onSubmit={handleSubmit}>
+            <label>Choose Pokemon</label>
+            <input className="pokemon-player-input"
+            name="pokemon"
+            value={value}
+            type="text"
+            onChange={e=> setValue(e.target.value)} />
+          </form> : null}
+         
         <div id="player-container">
         <div className="pokemon-display">
           <img className="enemy-pokemon" src={data.sprites.front_default} alt={`${data.name} default sprite`} />
@@ -30,7 +56,7 @@ function Player({player, setPlayer, enemy, setEnemy}) {
           </div>
         </div>
       </div>
-
+      </div>
       );
   }
 
