@@ -18,7 +18,9 @@ const token = process.env.REACT_APP_KEY;
 
 export const getUserData = () => {
     return fetch(`https://api.github.com/orgs/webahead5/members?access_token=${token}`)
+    .then((data)=>{console.log(data)
     .then(checkResponse)
+    })
     .catch(err => {
         throw new Error(`fetch getUserData failed ${err}`)
     });
