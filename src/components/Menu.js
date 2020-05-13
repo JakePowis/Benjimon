@@ -13,19 +13,20 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
     const [menu, setMenu] = useState("false")
     const [spr, setSpr] = useState("ready")
 
+    let battleAudio = new Audio(battleMusic)
 
     const toggleMute = () => {
 
         setMute(!mute)
+
+        if (!mute) {  //mute not working for MP3
+            battleAudio.pause();
+            battleAudio.currentTime = 0;
+        }
         console.log("MUTED", mute)
+
     }
 
-
-    const battleMusic = () => {
-        let audio = new Audio(battleMusic)
-        console.log("Play BATTLE sound", audio)
-        audio.play()
-    }
 
     const attackSound = (person) => {
         let audio = ""
@@ -51,8 +52,17 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
         audio.play()
     }
 
-    //Play on render
-    battleMusic();
+    useEffect(() => {
+        if (mute) battleAudio.play()
+        else {
+            battleAudio.pause();
+            battleAudio.currentTime = 0;
+        }
+        return () => {
+            battleAudio.pause();
+            battleAudio.currentTime = 0;
+        }
+    }, [mute]);
 
 
     const playerAttack = () => {
@@ -64,9 +74,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
             let remainingHp = enemy.hp - playerDam
             setMenu(false)
             setEnemy((enemy) => ({ ...enemy, hp: remainingHp < 0 ? 0 : remainingHp }))
-
         }, 1100)
-
     }
 
 
@@ -82,12 +90,8 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
             let remainingHp = enemy.hp - playerDam
             setMenu(false)
             setEnemy((enemy) => ({ ...enemy, hp: remainingHp < 0 ? 0 : remainingHp }))
-
         }, 1100)
-
     }
-
-
 
 
     const enemyAttack = () => {
@@ -99,9 +103,6 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
             setMenu(true)
             setPlayer((player) => ({ ...player, hp: remainingHp < 0 ? 0 : remainingHp }))
         }, 1100)
-
-        console.log("enemy attack", enemy, player);
-
     }
 
     useEffect(() => {
