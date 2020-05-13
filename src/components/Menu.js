@@ -1,24 +1,33 @@
 import React, { useEffect, useState } from 'react'
+import { gameOverCheck } from "../utils/utils"
 
-export function Attack({ player, setPlayer, enemy, setEnemy }) {
+export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameState, winner, setWinner }) {
 
     const [playerturn, setPlayerturn] = useState(true)
 
     const playerAttack = () => {
         let playerDam = Math.floor(10 + Math.random() * 20)
-        setEnemy((enemy) => ({ ...enemy, hp: enemy.hp - playerDam }))
+        let remainingHp = enemy.hp - playerDam
+        setEnemy((enemy) => ({ ...enemy, hp: remainingHp < 0 ? 0 : remainingHp }))
         console.log("player attack", enemy, player)
         setPlayerturn(!playerturn)
-        return
+
     }
 
     const enemyAttack = () => {
         let enemyDam = Math.floor(10 + Math.random() * 20)
-        setPlayer((player) => ({ ...player, hp: player.hp - enemyDam }))
+        let remainingHp = player.hp - enemyDam
+        setPlayer((player) => ({ ...player, hp: remainingHp < 0 ? 0 : remainingHp }))
         setPlayerturn(!playerturn)
         console.log("enemy attack", enemy, player);
-        return
+
     }
+
+    useEffect(() => {
+        gameOverCheck(gameState, setGameState, player, enemy, setPlayer, setEnemy, winner, setWinner)
+    }, [player, enemy]);
+
+
 
     return (
         // <button onClick={playerturn ? playerAttack : enemyAttack}>Attack</button>
@@ -32,7 +41,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy }) {
             </div>
             <div className="fight-menu">
                 <div className="right-menu">
-                    <h3 onClick={playerturn ? playerAttack : enemyAttack}>{playerturn? "ATTACK" : "DEFEND"}</h3>
+                    <h3 onClick={playerturn ? playerAttack : enemyAttack}>{playerturn ? "ATTACK" : "DEFEND"}</h3>
                     <h3 >RUN</h3>
                     <h3 >UNUSED</h3>
                     <h3 >UNUSED</h3>

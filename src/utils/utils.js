@@ -1,29 +1,47 @@
 const checkResponse = response => {
-  if(response.status !== 200) {
-      console.log(`Error with the request! ${response.status}`);
-      return;
+  if (response.status !== 200) {
+    console.log(`Error with the request! ${response.status}`);
+    return;
   }
   console.log(response.json);
-  
+
   return response.json()
 }
 
 export function getPokemon(name) {
-    return fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
-      .then(checkResponse)
-      .catch(err => {
-        throw new Error(`fetch getPokemon failed${err}`)
-      })
-  }
+  return fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+    .then(checkResponse)
+    .catch(err => {
+      throw new Error(`fetch getPokemon failed${err}`)
+    })
+}
 
 const token = process.env.REACT_APP_KEY;
 
 export const getUserData = () => {
-    return fetch(`https://api.github.com/orgs/webahead5/members?access_token=${token}`)
+  return fetch(`https://api.github.com/orgs/webahead5/members?access_token=${token}`)
     .then(checkResponse)
     .catch(err => {
-        throw new Error(`fetch getUserData failed ${err}`)
+      throw new Error(`fetch getUserData failed ${err}`)
     });
 };
+
+
+export const gameOverCheck = (gameState, setGameState, player, enemy, setWinner) => {
+  console.log("HP", enemy.hp, "MY HP", player.hp)
+
+
+  if (enemy.hp <= 0) {
+    setGameState({ ...gameState, gameState: "GameOver" })
+    setWinner("PLAYER")
+  }
+  if (player.hp <= 0) {
+    setGameState({ ...gameState, gameState: "GameOver" })
+    setWinner("ENEMY")
+  }
+
+}
+
+
 
 // export default {getUserData ,getPokemon}

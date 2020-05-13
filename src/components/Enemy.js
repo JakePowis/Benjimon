@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { getUserData } from '../utils/utils'
 
 function Enemy({ player, setPlayer, enemy, setEnemy }) {
+
+
     const [user, setUser] = useState(() => {
         return []
     })
@@ -10,10 +12,10 @@ function Enemy({ player, setPlayer, enemy, setEnemy }) {
         getUserData().then(data => setUser(data[Math.floor(Math.random() * data.length)]));
     }, []);
 
-    const { avatar_url, login} = user
+    const { avatar_url, login } = user
 
     return (
-        
+
         <div id="enemy-container">
             <div className="character-stats">
                 <div className="name-level">
