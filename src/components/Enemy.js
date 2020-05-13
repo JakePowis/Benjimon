@@ -12,7 +12,7 @@ function Enemy({ player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn }
         getUserData().then(data => {
             const randomUser = data[Math.floor(Math.random() * data.length)]
             setUser(randomUser)
-            setEnemy((enemy) => ({ ...enemy, name: randomUser.login }))
+            setEnemy((enemy) => ({ ...enemy, name: randomUser.login, avatar_url: randomUser.avatar_url }))
         })
     }, []);
 

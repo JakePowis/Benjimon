@@ -1,0 +1,29 @@
+.ko-container {
+    width: 90%;
+    height: 90%;
+    background-color: rgba(128, 128, 128, 0.322);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.ko-container>h3{
+    justify-content: center;
+    margin: 0
+}
+
+.ko-container>div{
+    justify-content: center;
+}
+div.victor-and-loser {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.victor-and-loser>img {
+    height: 90px;
+    width: 90px;
+    align-self: center;
+}
