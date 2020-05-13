@@ -12,12 +12,14 @@ function App() {
 
   const [player, setPlayer] = React.useState({
     hp: 100,
-    name: "pokemon"
+    name: "pikachu"
   })
   const [enemy, setEnemy] = React.useState({
     hp: 100,
     name: "enemy"
   })
+
+  const [playerTurn, setPlayerTurn] = React.useState(true)
 
   const [gameState, setGameState] = React.useState({
     gameState: "fight", //start, fight, gameover
@@ -25,30 +27,30 @@ function App() {
   })
 
   const [winner, setWinner] = React.useState(null)
-  const props = { player, setPlayer, enemy, setEnemy }
+  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn }
 
-    const game = gameState.gameState
-    const round = gameState.round
+  const game = gameState.gameState
+  const round = gameState.round
 
   return (
     <div className="App">
       <div id="game-container">
         <div id="battle-container">
 
-        {game === "start" ?
-                
-                <startScreen />
+          {game === "start" ?
 
-                : game === "fight" ?
-                <React.Fragment >
-                  <Enemy {...props} />
-                  <Player {...props} />
-                  <Attack {...props} gameState={gameState} setGameState={setGameState} setWinner={setWinner} />
+            <startScreen />
+
+            : game === "fight" ?
+              <React.Fragment >
+                <Enemy {...props} />
+                <Player {...props} />
+                <Attack {...props} gameState={gameState} setGameState={setGameState} setWinner={setWinner} />
               </React.Fragment>
-                    :  //gameOver
-                    <gameOverScreen />}
-                
-    
+              :  //gameOver
+              <gameOverScreen />}
+
+
           {/* <GameState gameState={gameState} winner={winner} setWinner={setWinner} /> */}
           {/* <Flee player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy}/> */}
         </div>
