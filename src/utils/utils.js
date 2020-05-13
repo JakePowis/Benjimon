@@ -8,6 +8,16 @@ const checkResponse = response => {
   return response.json()
 }
 
+// --------- unused for now -----------
+
+// export function pokemonNameSuggestion() {
+//   return fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=964')
+//     .then(checkResponse)
+//     .catch(err => {
+//       throw new Error(`fetch getPokemon failed${err}`)
+//     })
+// }
+
 export function getPokemon(name) {
   return fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
     .then(checkResponse)

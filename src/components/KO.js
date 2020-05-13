@@ -19,6 +19,7 @@ const KO = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, 
             </div>
             <p>{player.name} has won! {enemy.name} is defeated.</p>
             <h3 onClick={refreshgame}>Click here to start a new game</h3>
+
         </div>
     )
 }
