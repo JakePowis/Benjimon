@@ -6,23 +6,40 @@ function Player({ player, setPlayer, enemy, setEnemy }) {
     return ""
   })
 
-  const name = 'pikachu'
+  const [name, setName] = useState(() => {
+    return "pikachu"
+  })
+  const [value, setValue] = useState('')
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    if (!value) return;
+    setName(value)
+    setValue('')
+  }
 
   useEffect(() => {
     getPokemon(name).then((data) => setData(data))
-  }, [])
+  }, [name])
+
+
 
   if (!data) return <div>Loading...</div>;
   return (
-    <div id="player-container">
-      <div className="pokemon-display">
-        <img className="enemy-pokemon" src={data.sprites.back_default} alt={`${data.name} default sprite`} />
-        <div className="grey-oval"></div>
-      </div>
-      <div className="character-stats">
-        <div className="name-level">
-          <h2 className="name">{data.name}</h2>
-          <h2>Lv10</h2>
+    <div>
+      {name ? <form onSubmit={handleSubmit}>
+        <label>Choose Pokemon</label>
+        <input className="pokemon-player-input"
+          name="pokemon"
+          value={value}
+          type="text"
+          onChange={e => setValue(e.target.value)} />
+      </form> : null}
+
+      <div id="player-container">
+        <div className="pokemon-display">
+          <img className="enemy-pokemon" src={data.sprites.front_default} alt={`${data.name} default sprite`} />
+          <div className="grey-oval"></div>
         </div>
         <div className="bar">
           HP<progress value={player.hp} max="100">0%</progress>
@@ -30,7 +47,6 @@ function Player({ player, setPlayer, enemy, setEnemy }) {
         </div>
       </div>
     </div>
-
   );
 }
 

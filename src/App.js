@@ -27,15 +27,29 @@ function App() {
   const [winner, setWinner] = React.useState(null)
   const props = { player, setPlayer, enemy, setEnemy }
 
+    const game = gameState.gameState
+    const round = gameState.round
 
   return (
     <div className="App">
       <div id="game-container">
         <div id="battle-container">
-          <Enemy {...props} />
-          <Player {...props} />
-          <Attack {...props} gameState={gameState} setGameState={setGameState} setWinner={setWinner} />
-          <GameState gameState={gameState} winner={winner} setWinner={setWinner} />
+
+        {game === "start" ?
+                
+                <startScreen />
+
+                : game === "fight" ?
+                <React.Fragment >
+                  <Enemy {...props} />
+                  <Player {...props} />
+                  <Attack {...props} gameState={gameState} setGameState={setGameState} setWinner={setWinner} />
+              </React.Fragment>
+                    :  //gameOver
+                    <gameOverScreen />}
+                
+    
+          {/* <GameState gameState={gameState} winner={winner} setWinner={setWinner} /> */}
           {/* <Flee player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy}/> */}
         </div>
       </div>
