@@ -73,7 +73,7 @@
   
   @keyframes jump {
     10% {
-      transform: translateY(30px);
+      transform: translate(-45px, 15px);
     }
     
   
@@ -92,7 +92,7 @@
   
   @keyframes jump2 {
     10% {
-      transform: translateY(-30px);
+      transform: translate(45px, -15px);
     }
     
   
@@ -113,4 +113,8 @@
   .yellow {
 
     color:orange !important;
+  }
+
+  .green {
+    color: green !important;
   }
