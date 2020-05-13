@@ -1,8 +1,8 @@
 import React from 'react';
-import Pokemon from './components/Allies'
-import UserData from './components/Axis'
-import {Attack} from './components/buttons'
-import {Flee} from './components/buttons'
+import Player from './components/Player'
+import Enemy from './components/Enemy'
+import { Attack } from './components/Menu'
+import { Flee } from './components/Menu'
 import './App.css';
 
 
@@ -20,11 +20,15 @@ function App() {
 
   return (
     <div className="App">
-      
-      <Pokemon />
-      <UserData hp={enemy.hp} />
-      <Attack player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy}/>
+           <div id="game-container">
+        <div id="battle-container">
+        <Enemy player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy} />
+          
+          <Player player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy} />
+          <Attack player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy} />
       {/* <Flee player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy}/> */}
+        </div>
+      </div>
     </div>
   );
 }
