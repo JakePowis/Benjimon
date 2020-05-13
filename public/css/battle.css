@@ -37,6 +37,7 @@ h3:hover {
 div#game-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 800px;
     height: 500px;
     margin: auto;
@@ -81,6 +82,13 @@ div#enemy-container {
 .enemy-pokemon {
 
     border-radius: 40%;
+   
+}
+
+.player {
+
+    height: 350px !important;
+    width: 150px !important;
 }
 
 .bar {
@@ -143,8 +151,8 @@ div.grey-oval {
     display: flex;
     height: 200px;
     box-sizing: border-box;
-    background-color: black;
     border-radius: 5px;
+    background-color:inherit;
 }
 
 .left-menu {
