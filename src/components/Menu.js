@@ -125,11 +125,15 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
                 <div className="right-menu">
                     <h3 onClick={playerTurn ? playerAttack : enemyAttack}>{menu ? "ATTACK" : "DEFEND"}</h3>
                     <h3 className={spr === "used" ? "used" : ""} onClick={playerTurn ? superAttack : enemyAttack}>{menu ? "SUPER ATTACK" : "-"} </h3>
-                    <h3 onClick={toggleMute}>{mute ? "MUTE" : "MUTED"}</h3>
-                    <h3 onClick={() => setGameState({ ...gameState, gameState: "start" })}> RUN</h3>
+                    <h3 className={mute === "false" ? "" : "used"} onClick={toggleMute}>{mute ? "MUTE" : "MUTED"}</h3>
+                    <h3 onClick={() => {
+                        setGameState({ ...gameState, gameState: "start" })
+                        setPlayer({ ...player, hp: 100 })
+                        setEnemy({ ...enemy, hp: 100 })
+                    } > RUN</h3>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
