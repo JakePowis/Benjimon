@@ -6,11 +6,14 @@ function UserData ({hp}) {
         return []
     })
     
-    useEffect(() => {
-        getUserData().then(data => setUser(data[Math.floor(Math.random() * data.length)]));
-    }, []);
+    // useEffect(() => {
+    //     getUserData().then(data => setUser(data[Math.floor(Math.random() * data.length)]));
+    // }, []);
     
-    const { avatar_url, login} = user
+    // const { avatar_url, login} = user
+    const avatar_url ="https://cdn140.picsart.com/290512548038201.jpg?type=webp&to=min&r=640"
+    const login = "Jimbo"
+
     return (
         <div> 
             <ul>
