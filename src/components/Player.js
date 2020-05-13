@@ -14,12 +14,8 @@ function Player({player, setPlayer, enemy, setEnemy}) {
     const handleSubmit = e => {
       e.preventDefault()
       if(!value) return;
-      addName(value)
+      setName(value)
       setValue('')
-    }
-
-    const addName = name => {
-      setName(name)
     }
 
     useEffect(()=> {
