@@ -24,10 +24,13 @@ const KO = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, 
     return (
         <div className="ko-container">
             <div className="victor-and-loser">
-                <img className={(winner === "PLAYER" ? "playerwins" : "enemywins")} src={player.avatar_url} alt="player" />
-                <img className={(winner === "ENEMY" ? "playerwins" : "enemywins")} src={enemy.avatar_url} alt="enemy" />
+
+                {winner === "PLAYER" ? <img className={(winner === "PLAYER" ? "playerwins" : "enemywins")} src={player.avatar_url} alt="player" /> : <img className={(winner === "ENEMY" ? "playerwins" : "enemywins")} src={enemy.avatar_url} alt="enemy" />}
+
+
             </div>
-            <p>{player.name} has won! {enemy.name} is defeated.</p>
+            {winner === "PLAYER" ? <p><b>{player.name}</b> has <span className="green">won!</span> <br /><br />{enemy.name} is defeated</p> : <p><b>{enemy.name}</b> has won!  <br /><br />{player.name} is <span className="red">defeated</span></p>}
+
             <h3 onClick={refreshgame}>Click here to start a new game</h3>
 
         </div>

@@ -11,7 +11,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
 
     const [mute, setMute] = useState("false")
     const [menu, setMenu] = useState("false")
-    const [spr, setSpr] = useState("ready")
+    const [spr, setSpr] = useState("ready") //state for super
 
     let battleAudio = new Audio(battleMusic)
 
@@ -39,7 +39,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
             audio = new Audio(superSound) //change to good sound
             setTimeout(() => {
                 hit.play()
-                setTimeout(() => hit.play(), 800)
+                setTimeout(() => hit.play(), 150)
             }, 600) // fix set time out call back
 
             console.log("SUPPER HITTT")
@@ -88,6 +88,8 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
             let playerDam = ""
             playerDam = Math.floor(30 + Math.random() * 10)
             let remainingHp = enemy.hp - playerDam
+            let hit = new Audio(hitSound)
+            hit.play() //extra hit
             setMenu(false)
             setEnemy((enemy) => ({ ...enemy, hp: remainingHp < 0 ? 0 : remainingHp }))
         }, 1100)
@@ -98,7 +100,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
         if (mute) attackSound("enemy")
         setPlayerTurn(!playerTurn)
         setTimeout(() => {
-            let enemyDam = Math.floor(15 + Math.random() * 15)
+            let enemyDam = Math.floor(15 + Math.random() * 20)
             let remainingHp = player.hp - enemyDam
             setMenu(true)
             setPlayer((player) => ({ ...player, hp: remainingHp < 0 ? 0 : remainingHp }))
@@ -130,6 +132,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
                         setGameState({ ...gameState, gameState: "start" })
                         setPlayer({ ...player, hp: 100 })
                         setEnemy({ ...enemy, hp: 100 })
+                        setPlayerTurn(true)
                     }}> RUN</h3>
                 </div>
             </div>

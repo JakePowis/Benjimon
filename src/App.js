@@ -1,9 +1,7 @@
 import React from 'react';
 import Player from './components/Player'
 import Enemy from './components/Enemy'
-import GameState from './components/GameState'
 import { Attack } from './components/Menu'
-import { Flee } from './components/Menu'
 import KoScreen from './components/KO'
 import StartScreen from './components/StartScreen'
 import './App.css';

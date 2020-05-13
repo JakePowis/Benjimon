@@ -27,3 +27,14 @@ div.victor-and-loser {
     width: 90px;
     align-self: center;
 }
+
+.enemywins {
+
+    border-radius: 10px;
+}
+
+.playerwins {
+
+    border-radius: 10px;
+
+}

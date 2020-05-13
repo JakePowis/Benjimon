@@ -78,6 +78,11 @@ div#enemy-container {
     height: 50%;
 }
 
+.enemy-pokemon {
+
+    border-radius: 40%;
+}
+
 .bar {
     display: flex;
     /* height: 50%; */
