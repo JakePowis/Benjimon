@@ -14,7 +14,8 @@ function App() {
 
   const [player, setPlayer] = React.useState({
     hp: 100,
-    name: "pikachu"
+    name: "pikachu",
+    avatar_url: "https://avatars2.githubusercontent.com/u/51966598?s=460&u=9fda51179cc2ce2e7a37d0abe91bcd2e206e5423&v=4"
   })
   const [enemy, setEnemy] = React.useState({
     hp: 100,
@@ -32,16 +33,16 @@ function App() {
 
   const [winner, setWinner] = React.useState(null) //PLAYER or ENEMY
 
+  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner, gameState, setGameState }
 
   const game = gameState.gameState
   const round = gameState.round
-
-  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner }
 
   return (
     <div className="App">
       <div id="game-container">
         <div id="battle-container">
+
 
           {game === "start" ?
 
