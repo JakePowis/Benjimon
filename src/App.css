@@ -101,6 +101,49 @@
     }
   }
 
+  .spr {
+    animation: jump3 1s;
+    transition: ease-out;
+  }
+  
+  @keyframes jump3 {
+
+    20% {
+
+      transform: scale(1.0)
+    }
+
+    60% {
+
+      transform: scale(1.0)
+    }
+  
+    80% {
+      transform: scale(1.5)
+    }
+
+  }
+
+  .sprAtk {
+
+    animation: jump4 3.2s;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  @keyframes jump4 {
+    10% {
+      transform: translate(250px, -100px);
+    }
+    
+
+    40% {
+      transform: translateY(0px);
+    }
+  }
+
+
   .used {
 
     color: rgba(128, 128, 128, 0.678);
