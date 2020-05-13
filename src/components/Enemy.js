@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getUserData } from '../utils/utils'
 
-function Enemy({ player, setPlayer, enemy, setEnemy }) {
+function Enemy({ player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn }) {
 
 
     const [user, setUser] = useState(() => {
@@ -9,10 +9,19 @@ function Enemy({ player, setPlayer, enemy, setEnemy }) {
     })
 
     useEffect(() => {
-        getUserData().then(data => setUser(data[Math.floor(Math.random() * data.length)]));
+        getUserData().then(data => {
+            const randomUser = data[Math.floor(Math.random() * data.length)]
+            setUser(randomUser)
+            setEnemy((enemy) => ({ ...enemy, name: randomUser.login }))
+        })
     }, []);
 
+
+    // setEnemy((enemy) => {...enemy, name: user.login})
+
+
     const { avatar_url, login } = user
+
 
     return (
 
@@ -28,7 +37,7 @@ function Enemy({ player, setPlayer, enemy, setEnemy }) {
                 </div>
             </div>
             <div className="pokemon-display">
-                <img className="enemy-pokemon" src={avatar_url} />
+                <img className={"enemy-pokemon " + (!playerTurn ? "hit" : "enemyatk")} src={avatar_url} />
                 <div className="grey-oval"></div>
             </div>
         </div>

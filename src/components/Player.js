@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { getPokemon } from '../utils/utils'
 
-function Player({ player, setPlayer, enemy, setEnemy }) {
-  const [data, setData] = useState('')
+
+function Player({ player, setPlayer, enemy, setEnemy, playerTurn }) {
+  const [data, setData] = useState(() => {
+    return ""
+  })
 
 
   useEffect(() => {
@@ -10,6 +13,7 @@ function Player({ player, setPlayer, enemy, setEnemy }) {
   }, [player])
 
 
+  console.log("Player TURN", playerTurn)
 
   if (!data) return <div>Loading...</div>;
   return (
@@ -17,7 +21,10 @@ function Player({ player, setPlayer, enemy, setEnemy }) {
 
       <div id="player-container">
         <div className="pokemon-display">
-          <img className="enemy-pokemon" src={data.sprites.back_default} alt={`${data.name} default sprite`} />
+
+
+          <img className={"enemy-pokemon " + (playerTurn ? "hit" : "playeratk")} src={data.sprites.back_default} alt={`${data.name} default sprite`} />
+
           <div className="grey-oval"></div>
         </div>
         <div className="character-stats">
