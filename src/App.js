@@ -4,6 +4,7 @@ import Enemy from './components/Enemy'
 import GameState from './components/GameState'
 import { Attack } from './components/Menu'
 import { Flee } from './components/Menu'
+import StartScreen from './components/StartScreen'
 import './App.css';
 
 
@@ -22,10 +23,11 @@ function App() {
   const [playerTurn, setPlayerTurn] = React.useState(true)
 
   const [gameState, setGameState] = React.useState({
-    gameState: "fight", //start, fight, gameover
+    gameState: "start", //start, fight, gameover
     round: 1,
   })
-
+  console.log(gameState)
+ 
   const [winner, setWinner] = React.useState(null)
   const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn }
 
@@ -37,9 +39,10 @@ function App() {
       <div id="game-container">
         <div id="battle-container">
 
-          {game === "start" ?
+        {game === "start" ?
+                
+                <StartScreen setPlayer={setPlayer} player={player} setGameState={setGameState} gameState={gameState}/>
 
-            <startScreen />
 
             : game === "fight" ?
               <React.Fragment >
@@ -47,10 +50,11 @@ function App() {
                 <Player {...props} />
                 <Attack {...props} gameState={gameState} setGameState={setGameState} setWinner={setWinner} />
               </React.Fragment>
-              :  //gameOver
-              <gameOverScreen />}
 
-
+                    :  //gameOver
+                    <div>game over</div> }
+                
+    
           {/* <GameState gameState={gameState} winner={winner} setWinner={setWinner} /> */}
           {/* <Flee player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy}/> */}
         </div>
