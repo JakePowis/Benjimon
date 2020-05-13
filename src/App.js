@@ -5,7 +5,7 @@ import GameState from './components/GameState'
 import { Attack } from './components/Menu'
 import { Flee } from './components/Menu'
 import KoScreen from './components/KO'
-import StartScreen from './components/StartScreen'
+// import StartScreen from './components/StartScreen'
 import './App.css';
 
 
@@ -18,7 +18,8 @@ function App() {
   })
   const [enemy, setEnemy] = React.useState({
     hp: 100,
-    name: "enemy"
+    name: "enemy",
+    avatar_url: "https://avatars2.githubusercontent.com/u/51966598?s=460&u=9fda51179cc2ce2e7a37d0abe91bcd2e206e5423&v=4"
   })
 
   const [playerTurn, setPlayerTurn] = React.useState(true)
@@ -30,7 +31,7 @@ function App() {
   console.log(gameState)
  
   const [winner, setWinner] = React.useState(null)
-  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn }
+  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner }
 
   const game = gameState.gameState
   const round = gameState.round
@@ -42,8 +43,8 @@ function App() {
 
         {game === "start" ?
                 
-                <StartScreen setPlayer={setPlayer} player={player} setGameState={setGameState} gameState={gameState}/>
-
+                // <StartScreen setPlayer={setPlayer} player={player} setGameState={setGameState} gameState={gameState}/>
+<div>text</div>
 
             : game === "fight" ?
               <React.Fragment >
