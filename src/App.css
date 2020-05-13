@@ -43,7 +43,7 @@
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     perspective: 1000px;
-    animation-delay: 0.5s;
+    animation-delay: 1s;
   }
   
   @keyframes shake {
@@ -99,4 +99,18 @@
     40% {
       transform: translateY(0px);
     }
+  }
+
+  .used {
+
+    color: rgba(128, 128, 128, 0.678);
+  }
+
+  .red {
+    color: crimson !important;
+  }
+
+  .yellow {
+
+    color:orange !important;
   }

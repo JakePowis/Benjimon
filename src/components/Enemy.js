@@ -12,7 +12,7 @@ function Enemy({ player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn }
         getUserData().then(data => {
             const randomUser = data[Math.floor(Math.random() * data.length)]
             setUser(randomUser)
-            setEnemy((enemy) => ({ ...enemy, name: randomUser.login }))
+            setEnemy((enemy) => ({ ...enemy, name: randomUser.login, avatar_url: randomUser.avatar_url }))
         })
     }, []);
 
@@ -33,7 +33,7 @@ function Enemy({ player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn }
                 </div>
                 <div className="bar">
                     HP<progress value={enemy.hp} max="100">0%</progress>
-                    <h5>{enemy.hp}/100</h5>
+                    <h5><span className={enemy.hp > 60 ? "" : enemy.hp > 30 ? "yellow" : "red"}>{enemy.hp}</span>/100</h5>
                 </div>
             </div>
             <div className="pokemon-display">
