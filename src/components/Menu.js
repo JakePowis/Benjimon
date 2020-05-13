@@ -11,8 +11,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
 
     const [mute, setMute] = useState("false")
     const [menu, setMenu] = useState("false")
-
-    let playerDam = ""
+    const [onLoad, setOnLoad] = useState("true")
 
 
     let battleAudio = new Audio(battleMusic)
@@ -71,6 +70,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
         if (mute) attackSound("player")
         setPlayerTurn(!playerTurn)
         setTimeout(() => {
+            if (onLoad) setOnLoad(false)
             let playerDam = ""
             playerDam = Math.floor(10 + Math.random() * 20)
             let remainingHp = enemy.hp - playerDam
@@ -87,10 +87,11 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
         setSpr("used")
         setPlayerTurn(!playerTurn)
         setTimeout(() => {
+            if (onLoad) setOnLoad(false)
             let playerDam = Math.floor(30 + Math.random() * 10)
             let remainingHp = enemy.hp - playerDam
             let hit = new Audio(hitSound)
-            hit.play() //extra hit
+            if (mute) hit.play() //extra hit
             setMenu(false)
             setEnemy((enemy) => ({ ...enemy, hp: remainingHp < 0 ? 0 : remainingHp }))
         }, 1100)
@@ -112,7 +113,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
         gameOverCheck({ gameState, setGameState, player, enemy, setPlayer, setEnemy, winner, setWinner })
     }, [player, enemy]);
 
-
+    console.log("ONLOAD", onLoad)
 
     return (
         // <button onClick={playerturn ? playerAttack : enemyAttack}>Attack</button>
@@ -120,7 +121,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
             <div className="left-menu">
                 <div className="yellow-menu">
                     <div className="inner-menu">
-                        <p id="menu-prompt">{menu ? <span>What will {player.name} do?</span> : <span>{enemy.name} is ATTACKING!</span>} </p>
+                        <p id="menu-prompt">{onLoad ? <span>A WILD {enemy.name.toUpperCase()} APPEARS!!!!</span> : menu ? <span>What will {player.name} do?</span> : <span>{enemy.name} is ATTACKING!</span>} </p>
                     </div>
                 </div>
             </div>
