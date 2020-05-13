@@ -25,12 +25,11 @@ function App() {
   const [playerTurn, setPlayerTurn] = React.useState(true)
 
   const [gameState, setGameState] = React.useState({
-    gameState: "gameover", //start, fight, gameover
+    gameState: "start", //start, fight, gameover
     round: 1,
   })
-  console.log(gameState)
  
-  const [winner, setWinner] = React.useState(null)
+  const [winner, setWinner] = React.useState(null) //PLAYER or ENEMY
   const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner }
 
   const game = gameState.gameState
