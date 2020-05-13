@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="stylesheet" href="JDDELETE.css">
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -24,12 +23,67 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+  <title>React App</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <div id="game-container">
+    <div id="battle-container">
+      <div id="enemy-container">
+        <div class="character-stats">
+          <div class="name-level">
+            <h2 class="name">Enemy name</h2>
+            <h2>Lv10</h2>
+          </div>
+          <div class="bar">
+            HP<progress value=50 max=100>0%</progress>
+            <h5>50/100</h5>
+          </div>
+        </div>
+        <div class="pokemon-display">
+          <img class="enemy-pokemon" src="https://cdn140.picsart.com/290512548038201.jpg?type=webp&to=min&r=640">
+          <div class="grey-oval"></div>
+        </div>
+      </div>
+      <div id="player-container">
+        <div class="pokemon-display">
+          <img class="enemy-pokemon" src="https://cdn140.picsart.com/290512548038201.jpg?type=webp&to=min&r=640">
+          <div class="grey-oval"></div>
+        </div>
+        <div class="character-stats">
+          <div class="name-level">
+            <h2 class="name">Player name</h2>
+            <h2>Lv10</h2>
+          </div>
+          <div class="bar">
+            HP<progress value=50 max=100>0%</progress>
+            <h5>50/100</h5>
+          </div>
+        </div> <!-- character stats -->
+      </div> <!-- battle container -->
+      <div id="menu">
+        <div class="left-menu">
+          <div class="yellow-menu">
+            <div class="inner-menu">
+              <p id="menu-prompt">What will PLAYERNAME do?</p>
+            </div>
+          </div>
+        </div> <!-- left-menu container -->
+        <div class="fight-menu">
+          <div class="right-menu">
+            <h3 >FIGHT</h3>
+            <h3 >RUN</h3>
+            <h3 >UNUSED</h3>
+            <h3 >UNUSED</h3>
+          </div>
+        </div> <!-- fight container -->
+      </div> <!-- menu container -->
+    </div> <!-- game container -->
+  </div> <!-- root -->
+
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -39,5 +93,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+</body>
+
 </html>
