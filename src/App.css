@@ -118,3 +118,57 @@
   .green {
     color: green !important;
   }
+
+  fieldset {
+border: 5px solid  red;
+
+  }
+
+  .btn1 {
+    width: 70px;
+    height: 42px;
+    border: none;
+    background-color: rgba(255, 205, 5, 0.707);
+    border-radius: 20%;
+    margin: 10px;
+    color: rgba(255, 0, 0, 0.733);
+    font-weight: 800;
+    transition: ease-out 0.4s;
+    cursor: pointer;
+    box-shadow: 7px 7px 10px rgba(44, 44, 44, 0.589);
+  }
+
+  .btn1:hover {
+
+    transform: scale(1.1);
+    background-color: rgba(255, 203, 5);
+    color: red;
+
+  }
+
+  .startScreen {
+
+
+    font-size: 18px;
+  }
+
+  .pokeTitle {
+
+    color: rgb(42, 117, 187);
+    padding: 5px;
+  }
+
+  .choose-pokemon-input {
+
+    font-size: 18px;
+    color: rgba(42, 117, 187);
+    background-color: rgba(255, 205, 5, 0.089);
+    padding: 5px;
+    border-radius: 6px;
+    border: solid rgba(42, 117, 187) 2px
+  }
+
+  .pokeLegend {
+
+    letter-spacing: 2px;
+  }
