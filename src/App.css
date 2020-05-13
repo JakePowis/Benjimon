@@ -100,3 +100,17 @@
       transform: translateY(0px);
     }
   }
+
+  .used {
+
+    color: rgba(128, 128, 128, 0.678);
+  }
+
+  .red {
+    color: crimson !important;
+  }
+
+  .yellow {
+
+    color:orange !important;
+  }

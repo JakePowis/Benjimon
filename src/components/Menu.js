@@ -3,6 +3,7 @@ import { gameOverCheck } from "../utils/utils"
 import playerSound from "../assets/sound/SFX_SHOOTING_STAR.wav"
 import enemySound from "../assets/sound/SFX_INTRO_WHOOSH.wav"
 import hitSound from "../assets/sound/SFX_CUT.wav"
+import superSound from "../assets/sound/SFX_SHOOTING_STAR.wav"
 import battleMusic from "../assets/sound/battle.mp3"
 
 export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameState, winner, setWinner, playerTurn, setPlayerTurn }) {
@@ -10,6 +11,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
 
     const [mute, setMute] = useState("false")
     const [menu, setMenu] = useState("false")
+    const [spr, setSpr] = useState("ready")
 
 
     const toggleMute = () => {
@@ -32,6 +34,15 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
             audio = new Audio(playerSound)
             setTimeout(() => hit.play(), 1100)
         }
+        else if (person === "super") {
+            audio = new Audio(playerSound) //change to good sound
+            setTimeout(() => {
+                hit.play()
+                setTimeout(() => hit.play(), 800)
+            }, 600) // fix set time out call back
+
+            console.log("SUPPER HITTT")
+        }
         else {
             audio = new Audio(enemySound)
             setTimeout(() => hit.play(), 1100)
@@ -43,12 +54,13 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
     //Play on render
     battleMusic();
 
-    let menuPlayer = true;
+
     const playerAttack = () => {
         if (mute) attackSound("player")
         setPlayerTurn(!playerTurn)
         setTimeout(() => {
-            let playerDam = Math.floor(10 + Math.random() * 20)
+            let playerDam = ""
+            playerDam = Math.floor(10 + Math.random() * 20)
             let remainingHp = enemy.hp - playerDam
             setMenu(false)
             setEnemy((enemy) => ({ ...enemy, hp: remainingHp < 0 ? 0 : remainingHp }))
@@ -56,6 +68,27 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
         }, 1100)
 
     }
+
+
+    const superAttack = () => {
+        if (spr === "used") return
+
+        if (mute) attackSound("super")
+        setSpr("used")
+        setPlayerTurn(!playerTurn)
+        setTimeout(() => {
+            let playerDam = ""
+            playerDam = Math.floor(30 + Math.random() * 10)
+            let remainingHp = enemy.hp - playerDam
+            setMenu(false)
+            setEnemy((enemy) => ({ ...enemy, hp: remainingHp < 0 ? 0 : remainingHp }))
+
+        }, 1100)
+
+    }
+
+
+
 
     const enemyAttack = () => {
         if (mute) attackSound("enemy")
@@ -89,10 +122,10 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
             </div>
             <div className="fight-menu">
                 <div className="right-menu">
-                    <h3 onClick={playerTurn ? playerAttack : enemyAttack}>{playerTurn ? "ATTACK" : "DEFEND"}</h3>
-                    <h3 onClick={() => setGameState({ ...gameState, gameState: "start" })}> RUN</h3>
+                    <h3 onClick={playerTurn ? playerAttack : enemyAttack}>{menu ? "ATTACK" : "DEFEND"}</h3>
+                    <h3 className={spr === "used" ? "used" : ""} onClick={playerTurn ? superAttack : enemyAttack}>{menu ? "SUPER ATTACK" : "-"} </h3>
                     <h3 onClick={toggleMute}>{mute ? "MUTE" : "MUTED"}</h3>
-                    <h3 >....</h3>
+                    <h3 onClick={() => setGameState({ ...gameState, gameState: "start" })}> RUN</h3>
                 </div>
             </div>
         </div>
