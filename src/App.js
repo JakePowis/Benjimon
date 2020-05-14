@@ -1,9 +1,7 @@
 import React from 'react';
 import Player from './components/Player'
 import Enemy from './components/Enemy'
-import GameState from './components/GameState'
 import { Attack } from './components/Menu'
-import { Flee } from './components/Menu'
 import KoScreen from './components/KO'
 import StartScreen from './components/StartScreen'
 import Head from './components/Head'
@@ -14,7 +12,13 @@ import './App.css';
 function App() {
 
 
-  const [username, setUsername] = React.useState(localStorage.getItem('name') || '')
+  const [username, setUsername] = React.useState(localStorage.getItem('name'))
+  
+
+  React.useEffect(()=> {
+    if(username)
+    localStorage.setItem('name', username)
+}, [username])
 
   const [player, setPlayer] = React.useState({
     hp: 100,
@@ -29,6 +33,8 @@ function App() {
 
   const [playerTurn, setPlayerTurn] = React.useState(true)
 
+  const [spr, setSpr] = React.useState("ready") //state for super
+
   const [gameState, setGameState] = React.useState({
     gameState: "start", //start, fight, gameover
     round: 1,
@@ -37,7 +43,7 @@ function App() {
 
   const [winner, setWinner] = React.useState(null) //PLAYER or ENEMY
 
-  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner, gameState, setGameState }
+  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner, gameState, setGameState, spr, setSpr }
 
   const game = gameState.gameState
   const round = gameState.round
@@ -45,22 +51,20 @@ function App() {
   return (
     <div className="App">
       <div id="game-container">
-        <div id="battle-container">
-          {game === "start" ?
-            <StartScreen setPlayer={setPlayer} player={player} setGameState={setGameState} gameState={gameState} username={username} setUsername={setUsername} />
-            : game === "fight" ?
+
+        {game === "start" ?
+          <StartScreen setPlayer={setPlayer} player={player} setGameState={setGameState} gameState={gameState} username={username} setUsername={setUsername} />
+          : game === "fight" ?
+            <div id="battle-container">
               <React.Fragment >
                 <Head username={username}/>
                 <Enemy {...props} />
                 <Player {...props} />
                 <Attack {...props} gameState={gameState} setGameState={setGameState} setWinner={setWinner} />
               </React.Fragment>
-              :  //gameOver
-              <KoScreen {...props} />}
+            </div>
+            : <KoScreen {...props} />}
 
-          {/* <GameState gameState={gameState} winner={winner} setWinner={setWinner} /> */}
-          {/* <Flee player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy}/> */}
-        </div>
       </div>
     </div>
   );

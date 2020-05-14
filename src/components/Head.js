@@ -1,14 +1,10 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 
 const Head = ({username}) => {
     
-    useEffect(()=> {
-        localStorage.setItem('name', username)
-    }, [username])
-
     return (
         <div className="welcome-message">
-            Welcome {username}
+            Happy Gaming {username}
         </div>
     )
 }
