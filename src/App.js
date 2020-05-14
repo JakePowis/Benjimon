@@ -35,7 +35,7 @@ function App() {
 
   const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner, gameState, setGameState, spr, setSpr }
 
-  const game = ""//gameState.gameState
+  const game = gameState.gameState
   const round = gameState.round
 
   return (
