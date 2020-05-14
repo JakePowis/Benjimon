@@ -38,12 +38,13 @@ function App() {
   const [gameState, setGameState] = React.useState({
     gameState: "start", //start, fight, gameover
     round: 1,
+    diff: "Normal" //Normal, Hard
   })
 
 
   const [winner, setWinner] = React.useState(null) //PLAYER or ENEMY
 
-  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner, gameState, setGameState, spr, setSpr }
+  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner, gameState, setGameState, spr, setSpr, username, setUsername }
 
   const game = gameState.gameState
   const round = gameState.round
@@ -53,15 +54,15 @@ function App() {
       <div id="game-container">
 
         {game === "start" ?
-          <StartScreen setPlayer={setPlayer} player={player} setGameState={setGameState} gameState={gameState} username={username} setUsername={setUsername} />
+          <div id="battle-container">
+            <StartScreen {...props} />
+          </div>
           : game === "fight" ?
             <div id="battle-container">
-              <React.Fragment >
-                <Head username={username}/>
-                <Enemy {...props} />
-                <Player {...props} />
-                <Attack {...props} gameState={gameState} setGameState={setGameState} setWinner={setWinner} />
-              </React.Fragment>
+              <Head username = {username} />
+              <Enemy {...props} />
+              <Player {...props} />
+              <Attack {...props} />
             </div>
             : <KoScreen {...props} />}
 

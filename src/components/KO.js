@@ -14,6 +14,7 @@ const KO = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, 
     }
 
     let endAudio = new Audio(endMusic)
+    endAudio.volume = 0.05;
 
     useEffect(() => {
         endAudio.play()
@@ -45,7 +46,7 @@ const KO = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, 
                     <img src={player.avatar_url} alt="player" />
                 </div>
                 <div className={("contender enemy " + winner === "PLAYER" ? "loserimage" : "winnerimage")}>
-                {winner === "PLAYER" ? "": <img src="../assets/images/trophy.svg" className="trophy" alt="trophy" />}
+                    {winner === "PLAYER" ? "" : <img src="../assets/images/trophy.svg" className="trophy" alt="trophy" />}
                     <img src={enemy.avatar_url} alt="enemy" />
                 </div>
             </div>

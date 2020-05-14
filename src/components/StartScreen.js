@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 // import AutoComplete from './Suggestion'
 
 
-const StartScreen = ({ setPlayer, setGameState, gameState, player, username, setUsername }) => {
+const StartScreen = ({ setPlayer, setGameState, username, setUsername }) => {
     const [value, setValue] = useState('')
     const [nameValue, setNameValue] = useState('')
+
 
 
 
@@ -19,9 +20,12 @@ const StartScreen = ({ setPlayer, setGameState, gameState, player, username, set
         setUsername(nameValue || localStorage.getItem('name'))
         setGameState((gameState) => ({ ...gameState, gameState: "fight" }))
     }
-    
 
-    
+    const handleDiffChange = e => {
+        let diff = e.target.value
+        setGameState((gameState) => ({ ...gameState, diff: diff }))
+
+    }
 
     return (
 
@@ -45,10 +49,15 @@ const StartScreen = ({ setPlayer, setGameState, gameState, player, username, set
                 <button type="submit" className="btn1" value="Submit" onClick={handleSubmit}>BATTLE!</button>
 
             </fieldset>
-            <br /><br /><br />
+            <br /><br /> <br />
+            <select className="choose-pokemon-input" onChange={handleDiffChange}>
+                <option value="Normal"> Normal Mode</option>
+                <option value="Hard" style={{ fontWeight: 800 }}> Hard Mode</option>
+                    ))}
+                </select>
+            <br />
 
-
-        </div >
+        </div>
 
 
     )
