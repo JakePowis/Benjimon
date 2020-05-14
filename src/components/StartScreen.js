@@ -11,7 +11,7 @@ const StartScreen = ({ setPlayer, setGameState, username, setUsername }) => {
 
     const [suggestion, setSuggestion] = useState(() => {
         return [
-            "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree", "Weedle", 'Jigglypuff', 'Pidgey', 'Magikarp', 'Meowth', 'Charmander', 'Greninja', 'Lucario', 'Mimikyu-disguised', 'Charizard-mega-x', 'Umbreon', "Geodude", "Graveler", "Golem", "Ponyta", "Rapidash", 'Sylveon', "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Poliwrath", "Abra", "Kadabra", "Alakazam", 'Gardevoir-mega', 'Gengar', "Electabuzz", "Magmar", "Gyarados", "Nidorino", "Clefairy", 'toxicroak', 'Lugia', 'Rowlet', 'Aegislash-blade', 'Chandelure', 'Pikachu', 'Eevee', 'Luxray', "Magneton", "Farfetch'd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster", "Gastly", 'Decidueye', 'Zoroark', 'Lycanroc-midday', 'corsola', 'Flygon', 'Hydreigon', 'Sceptile', 'Blaziken-mega', 'snorlax', "Dragonair", "Dragonite", "Mewtwo", "Mew"]
+            "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree", "Weedle", 'Jigglypuff', 'Pidgey', 'Magikarp', 'Meowth', 'Greninja', 'Oddish', 'Lucario', 'Mimikyu-disguised', 'Charizard-mega-x', 'Umbreon', "Geodude", "Graveler", "Golem", "Ponyta", "Rapidash", 'Sylveon', "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Poliwrath", "Abra", "Kadabra", "Alakazam", 'Gardevoir-mega', 'Gengar', "Electabuzz", "Magmar", "Gyarados", "Nidorino", "Clefairy", 'toxicroak', 'Lugia', 'Rowlet', 'Aegislash-blade', 'Chandelure', 'Pikachu', 'Eevee', 'Luxray', "Magneton", "Farfetch'd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster", "Gastly", 'Decidueye', 'Zoroark', 'Lycanroc-midday', 'corsola', 'Flygon', 'Hydreigon', 'Sceptile', 'Blaziken-mega', 'snorlax', "Dragonair", "Dragonite", "Mewtwo", "Mew"]
     })
 
     const handleSubmit = e => {
@@ -50,7 +50,7 @@ const StartScreen = ({ setPlayer, setGameState, username, setUsername }) => {
 
             </fieldset>
             <br /><br /> <br />
-            <select className="choose-pokemon-input" onChange={handleDiffChange}>
+            <select className="choose-pokemon-input diff" onChange={handleDiffChange}>
                 <option value="Normal"> Normal Mode</option>
                 <option value="Hard" style={{ fontWeight: 800 }}> Hard Mode</option>
                     ))}
