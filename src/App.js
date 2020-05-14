@@ -4,11 +4,21 @@ import Enemy from './components/Enemy'
 import { Attack } from './components/Menu'
 import KoScreen from './components/KO'
 import StartScreen from './components/StartScreen'
+import Head from './components/Head'
 import './App.css';
 
 
 
 function App() {
+
+
+  const [username, setUsername] = React.useState(localStorage.getItem('name'))
+  
+
+  React.useEffect(()=> {
+    if(username)
+    localStorage.setItem('name', username)
+}, [username])
 
   const [player, setPlayer] = React.useState({
     hp: 100,
@@ -34,7 +44,7 @@ function App() {
 
   const [winner, setWinner] = React.useState(null) //PLAYER or ENEMY
 
-  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner, gameState, setGameState, spr, setSpr }
+  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner, gameState, setGameState, spr, setSpr, username, setUsername }
 
   const game = gameState.gameState
   const round = gameState.round
@@ -49,6 +59,7 @@ function App() {
           </div>
           : game === "fight" ?
             <div id="battle-container">
+              <Head username = {username} />
               <Enemy {...props} />
               <Player {...props} />
               <Attack {...props} />

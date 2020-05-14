@@ -185,6 +185,16 @@ fieldset {
   height: 100%;
 }
 
+
+  
+  .name-input {
+    font-size: 18px;
+    color: rgba(42, 117, 187);
+    background-color: rgba(255, 205, 5, 0.089);
+    padding: 5px;
+    border-radius: 6px;
+    border: solid rgba(42, 117, 187) 2px
+  }
 .pokeTitle {
   color: rgb(42, 117, 187);
   padding: 5px;
@@ -199,6 +209,10 @@ fieldset {
   border: solid rgba(42, 117, 187) 2px
 }
 
+ 
+  .welcome-message {
+    margin-bottom: 30px;
+  }
 .pokeLegend {
   letter-spacing: 2px;
 }
