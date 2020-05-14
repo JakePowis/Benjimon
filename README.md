@@ -1,68 +1,193 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Pokemon-war 
 
-## Available Scripts
+***[Click here to Play Pokemon War!!!](https://pokemon-war.netlify.app/)***
 
-In the project directory, you can run:
+### Introduction
 
-### `npm start`
+Here we are again, with another creative and nostalgic game, that gonna put smile on your face when ever you play it
+How many of you didn't watch pokemon or play pokemon game once, or even didnt hear about it.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+We wanted to come with something fun while also practice the React library, and master the hooks, while also having fun working on the project.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### How to Play 
+![](https://i.imgur.com/4JVvqyw.gif)
 
-### `npm run build`
+- Enter the app
+- Enter your name
+- Choose your favorite pokemon
+- Select your difficulty level
+- The game will put you against one of the 15 github monsters you have to beat.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![](https://i.imgur.com/1i96GOb.gif)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- you have 3 buttons which you need to play with.
+     - **Attack** is the button you use to the attack the enemy, you can use it as much as you want.
+     - **Super Attack** is one per game special attack that does higher damage than the normal Attack button, so be wise and use it carefuly.
+     - **Run**... please don't tell me you gonna use this button.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![](https://i.imgur.com/1Lhpl7D.gif)
 
-### `npm run eject`
+- You can also use the mute button to mute the game noises at any time.
+- The aim is to defeat your opponanent and make his HP fall to 0!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Components
+    Components
+    - App
+        - Start Screen
+        
+        - Fight Screen
+            - Enemy
+            - Player
+            - Menu
+        
+        - GameOver Screen
+         
+    States
+        -playerState
+        -gameState
+        -loadState
+        -winnerState
+        -turnState
+        -superMoveState
+        -muteState
+        -volumeState
+        -usernameState
+        
+        
+    API Calls
+        -Pokemon API 
+        -GitHub API
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Team workflow
 
-## Learn More
+#### Day-1
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+On the first day we decided to start the build together until we setup the whole file structure so then we can split the work between us the next day.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Day-2
 
-### Code Splitting
+We split the work load into the 3 main componenents
+    - **Marwan:** *Welcome screen*, including select pokemon, save username to local storage, API calls etc
+    - **Jake:** *Battle screen*, including battle animations, sounds & game logic
+    - **James:** *GameOver screen*, including ending animations, game reset, plus overall CSS & sounds
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Useful Links
+* [Github Repo](https://github.com/WebAhead5/Pokemon-War.git)
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Features
 
-### Making a Progressive Web App
+### Audio
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-### Advanced Configuration
+Battle music auto plays when the gameState changes to fight!
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+        useEffect(() => {
+        if (!mute) battleAudio.play()
+        else {
+            battleAudio.pause();
+            battleAudio.currentTime = 0;
+        }
+        return () => {
+            battleAudio.pause();
+            battleAudio.currentTime = 0;
+        }
+    }, [mute]);
 
-### Deployment
+when the gameState changes to something else, the music stops, and when mute is pressed, the music also stops.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
+The other sound effects are linked to the button press:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+    OnClick runs a function that contains:
+    
+    if (!mute) attackSound("player")
+
+When its your turn youll hear the sound for your pokemon, and when its the enemys turn youll hear their attack sound!
+
+        const attackSound = (person) => {
+        let audio = ""
+        let hit = new Audio(hitSound)
+        hit.volume = volumeState;
+
+        if (person === "player") {
+            audio = new Audio(playerSound)
+            audio.volume = volumeState;
+            setTimeout(() => hit.play(), 1100)
+        }
+        else if (person === "super") {
+            audio = new Audio(superSound)
+            audio.volume = volumeState; 
+            setTimeout(() => {
+                hit.play()
+                setTimeout(() => hit.play(), 400)
+            }, 600) 
+            
+        else {
+            audio = new Audio(enemySound)
+            audio.volume = volumeState; //change to good sound
+            setTimeout(() => hit.play(), 1100)
+            }
+        
+        audio.play()
+        }
+
+The 'hit sound' is on a set timeout, so that it will always play 1100ms after the attack sound (or in the case of super, play twice)
+
+### Battle Logic
+
+Both the player attacks and enemy attacks rae based on generating random numbers, plus a fixed base amount:
+
+    Player Normal:    Math.floor(10 + Math.random() * 20)  - between 11-30
+
+    Enemy Normal:     Math.floor(15 + Math.random() * 20)  - between 16-35
+    
+    Player Super:     Math.floor(30 + Math.random() * 10)  - between 31-40
+
+This makes it fun for the user as the battles should be very close, with an element of randomness dictating the final result.
+
+In hard mode, +10 is added ontop the base damage of the enemy
+
+    Enemy Hard:  Math.floor(15 + Math.random() * 20)
+                 if (gameState.diff === "Hard") enemyDam = enemyDam + 10
+                 
+                 so between 26-45 each hit!
+
+
+When someones HP falls below 0, the gameState is set to GameOver.
+
+### Pokemon Theme
+
+We settled on the idea of a pokemon battle concept and wanted the game to have a retro 90's feel.
+
+![](https://i.imgur.com/X1OBZWt.png)
+
+After some searching online, we found a team (credited below) who had created a pokemon battle app with Angular JS.
+
+![](https://i.imgur.com/p02gY33.png)
+
+Rather than re-invent the wheel we adapted what we could for our own app:
+
+![](https://i.imgur.com/DrxLb0b.png)
+
+The Angular app also had the pokemon theme and an authentic looking font which we were able to use. We later found the battle sound effects from sounds-resource.com.
+
+### CSS
+
+The confetti effect was found on cagremett.com, after some time searching google. 
+
+![](https://i.imgur.com/uj8l3Uk.gif)
+
+The pokemon animations were taken from css-tricks.com and other resources found by searching google (see credits).
+
+### Credits
+
+* [CSS](https://css-tricks.com/css-animation-libraries/)
+* [Angular JS game that we took some of the sounds, font and css from](https://github.com/nathan-barrett/PokemonJS)
+* [Trophy Icon](Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>)
+* [Pokemon gameboy sounds](https://www.sounds-resource.com/game_boy_gbc/pokemonredblueyellow/sound/17241/)
+* [CSS Confetti](http://www.cagrimmett.com/til/2018/01/05/css-confetti.html)

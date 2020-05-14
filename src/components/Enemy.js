@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getUserData } from '../utils/utils'
 
-function Enemy({ player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, spr, setSpr }) {
+function Enemy({ enemy, setEnemy, playerTurn, spr }) {
 
 
     const [user, setUser] = useState(() => {
