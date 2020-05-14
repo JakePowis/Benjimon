@@ -14,6 +14,7 @@ const KO = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, 
     }
 
     let endAudio = new Audio(endMusic)
+    endAudio.volume = 0.05;
 
     useEffect(() => {
         endAudio.play()

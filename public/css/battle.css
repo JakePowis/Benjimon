@@ -7,8 +7,8 @@
 body {
     font-family: PokemonGB;
     box-sizing: border-box;
-    color: 	#303030;
-    padding-top:20px;
+    color: #303030;
+    padding-top: 20px;
 }
 
 div {
@@ -31,17 +31,18 @@ h3 {
 }
 
 h3:hover {
-   color:rgba(128, 128, 128, 0.746)
+    color: rgba(128, 128, 128, 0.746)
 }
-
 
 div#game-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     width: 800px;
     height: 500px;
     margin: auto;
+ 
+
 }
 
 div#battle-container {
@@ -49,6 +50,7 @@ div#battle-container {
 }
 
 div#enemy-container {
+    margin-top: 10px;
     height: 50%;
     display: flex;
 }
@@ -64,7 +66,7 @@ div.character-stats {
     width: 50%;
     border: solid rgb(18, 75, 35) 3px;
     border-radius: 10px;
-    padding: 5px;
+    /* padding: 5px; */
     height: 80%;
 }
 
@@ -74,20 +76,20 @@ div.character-stats {
     justify-content: space-between;
 }
 
-.character-stats>h2 {}
+.startScreen>img {
+    margin-top: 5px;
+    width: 95%;
+}
 
 div#enemy-container {
     height: 50%;
 }
 
 .enemy-pokemon {
-
     border-radius: 40%;
-   
 }
 
 .player {
-
     height: 350px !important;
     width: 150px !important;
 }
@@ -151,10 +153,10 @@ div.grey-oval {
 #menu {
     /* width: 90%; */
     display: flex;
-    height: 200px;
+    height: 180px;
     box-sizing: border-box;
     border-radius: 5px;
-    background-color:inherit;
+    background-color: inherit;
 }
 
 .left-menu {
@@ -207,25 +209,3 @@ div.grey-oval {
     height: 100%;
     background: #f8f8f8;
 }
-
-
-
-/* 
-      <div id="menu">
-        <div class="left-menu">
-          <div class="yellow-menu">
-            <div class="inner-menu">
-              <p id="menu-prompt">What will PLAYERNAME do?</p>
-            </div>
-          </div>
-        </div> <!-- left-menu container -->
-        <div class="fight-menu">
-          <div class="right-menu">
-            <h3 >FIGHT</h3>
-            <h3 >RUN</h3>
-            <h3 >UNUSED</h3>
-            <h3 >UNUSED</h3>
-          </div>
-        </div> <!-- fight container -->
-      </div> <!-- menu container -->
- */
