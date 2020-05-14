@@ -1,9 +1,7 @@
 import React from 'react';
 import Player from './components/Player'
 import Enemy from './components/Enemy'
-import GameState from './components/GameState'
 import { Attack } from './components/Menu'
-import { Flee } from './components/Menu'
 import KoScreen from './components/KO'
 import StartScreen from './components/StartScreen'
 import './App.css';
@@ -25,6 +23,8 @@ function App() {
 
   const [playerTurn, setPlayerTurn] = React.useState(true)
 
+  const [spr, setSpr] = React.useState("ready") //state for super
+
   const [gameState, setGameState] = React.useState({
     gameState: "start", //start, fight, gameover
     round: 1,
@@ -33,9 +33,9 @@ function App() {
 
   const [winner, setWinner] = React.useState(null) //PLAYER or ENEMY
 
-  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner, gameState, setGameState }
+  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner, gameState, setGameState, spr, setSpr }
 
-  const game = gameState.gameState
+  const game = ""//gameState.gameState
   const round = gameState.round
 
   return (

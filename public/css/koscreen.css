@@ -7,6 +7,7 @@
     align-content: center;
     background-image: url(../assets/images/victoryscreenS.jpeg);
     background-size: cover;
+    position: relative;
 }
 
 .ko-container>h3 {
@@ -29,9 +30,9 @@ div.victor-and-loser {
     justify-content: space-around;
 }
 
-div.contender {
+/* div.contender {
     position: relative;
-}
+} */
 
 .victor-and-loser img {
     height: 100px;

@@ -30,9 +30,15 @@ h3 {
     cursor: pointer;
 }
 
+h3:hover {
+   color:rgba(128, 128, 128, 0.746)
+}
+
+
 div#game-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 800px;
     height: 500px;
     margin: auto;
@@ -72,6 +78,18 @@ div.character-stats {
 
 div#enemy-container {
     height: 50%;
+}
+
+.enemy-pokemon {
+
+    border-radius: 40%;
+   
+}
+
+.player {
+
+    height: 350px !important;
+    width: 150px !important;
 }
 
 .bar {
@@ -127,6 +145,7 @@ div.grey-oval {
     height: 15px;
     margin: 0 auto;
     border-radius: 50%;
+    z-index: -10;
 }
 
 #menu {
@@ -134,8 +153,8 @@ div.grey-oval {
     display: flex;
     height: 200px;
     box-sizing: border-box;
-    background-color: black;
     border-radius: 5px;
+    background-color:inherit;
 }
 
 .left-menu {
