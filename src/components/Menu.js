@@ -6,7 +6,7 @@ import hitSound from "../assets/sound/SFX_CUT.wav"
 import superSound from "../assets/sound/super.wav"
 import battleMusic from "../assets/sound/battle.mp3"
 
-export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameState, winner, setWinner, playerTurn, setPlayerTurn, spr, setSpr }) {
+export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameState, winner, setWinner, playerTurn, setPlayerTurn, spr, setSpr, volumeState }) {
 
 
     const [mute, setMute] = useState("false")
@@ -15,8 +15,10 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
 
 
     let battleAudio = new Audio(battleMusic)
-    battleAudio.volume = 0.05;
-
+    battleAudio.volume = volumeState;
+    console.log("volume State is: ", volumeState);
+    console.log("battlevol is: ", battleAudio.volume);
+    
     const toggleMute = () => {
 
         setMute(!mute)
@@ -32,12 +34,16 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
     const attackSound = (person) => {
         let audio = ""
         let hit = new Audio(hitSound)
+        hit.volume = volumeState; //change to good sound
+
         if (person === "player") {
             audio = new Audio(playerSound)
+            audio.volume = volumeState;
             setTimeout(() => hit.play(), 1100)
         }
         else if (person === "super") {
-            audio = new Audio(superSound) //change to good sound
+            audio = new Audio(superSound)
+            audio.volume = volumeState; //change to good sound
             setTimeout(() => {
                 hit.play()
                 setTimeout(() => hit.play(), 400)
@@ -47,6 +53,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
         }
         else {
             audio = new Audio(enemySound)
+            audio.volume = volumeState; //change to good sound
             setTimeout(() => hit.play(), 1100)
         }
         audio.play()
@@ -90,6 +97,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
             let playerDam = Math.floor(30 + Math.random() * 10)
             let remainingHp = enemy.hp - playerDam
             let hit = new Audio(hitSound)
+            hit.volume = volumeState; //change to good sound
             if (mute) hit.play() //extra hit
             setMenu(false)
             setEnemy((enemy) => ({ ...enemy, hp: remainingHp < 0 ? 0 : remainingHp }))
