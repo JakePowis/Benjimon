@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import endMusic from "../assets/sound/SFX_GET_KEY_ITEM.wav"
 
-const KO = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, setGameState, setSpr, setPlayerTurn, volumeState }) => {
+const KO = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, setGameState, setSpr, setPlayerTurn, volumeState, mute }) => {
 
     console.log("player avatar_url = ", player);
 
@@ -17,7 +17,7 @@ const KO = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, 
     endAudio.volume = volumeState;
 
     useEffect(() => {
-        endAudio.play()
+        if (mute) endAudio.play()
         return () => {
             endAudio.pause();
             endAudio.currentTime = 0;

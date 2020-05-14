@@ -6,10 +6,10 @@ import hitSound from "../assets/sound/SFX_CUT.wav"
 import superSound from "../assets/sound/super.wav"
 import battleMusic from "../assets/sound/battle.mp3"
 
-export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameState, winner, setWinner, playerTurn, setPlayerTurn, spr, setSpr, volumeState }) {
+export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameState, winner, setWinner, playerTurn, setPlayerTurn, spr, setSpr, volumeState, mute, setMute }) {
 
 
-    const [mute, setMute] = useState("false")
+
     const [menu, setMenu] = useState("false")
     const [onLoad, setOnLoad] = useState("true")
 
@@ -18,7 +18,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
     battleAudio.volume = volumeState;
     console.log("volume State is: ", volumeState);
     console.log("battlevol is: ", battleAudio.volume);
-    
+
     const toggleMute = () => {
 
         setMute(!mute)

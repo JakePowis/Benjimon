@@ -13,12 +13,12 @@ function App() {
 
 
   const [username, setUsername] = React.useState(localStorage.getItem('name'))
-  
 
-  React.useEffect(()=> {
-    if(username)
-    localStorage.setItem('name', username)
-}, [username])
+
+  React.useEffect(() => {
+    if (username)
+      localStorage.setItem('name', username)
+  }, [username])
 
   const [player, setPlayer] = React.useState({
     hp: 100,
@@ -48,14 +48,17 @@ function App() {
     else if (event.key == '0') setVolumeState(1)
   }
 
+  const [mute, setMute] = React.useState("false")
+
   document.addEventListener("keydown", handleKeyPress)
 
   const [winner, setWinner] = React.useState(null) //PLAYER or ENEMY
 
-  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner, gameState, setGameState, spr, setSpr, username, setUsername, volumeState }
+  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner, gameState, setGameState, spr, setSpr, username, setUsername, volumeState, mute, setMute }
 
   const game = gameState.gameState
   const round = gameState.round
+
 
 
 
@@ -69,7 +72,7 @@ function App() {
           </div>
           : game === "fight" ?
             <div id="battle-container">
-              <Head username = {username} />
+              <Head username={username} />
               <Enemy {...props} />
               <Player {...props} />
               <Attack {...props} />
