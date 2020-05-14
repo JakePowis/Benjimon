@@ -6,11 +6,15 @@ import { Attack } from './components/Menu'
 import { Flee } from './components/Menu'
 import KoScreen from './components/KO'
 import StartScreen from './components/StartScreen'
+import Head from './components/Head'
 import './App.css';
 
 
 
 function App() {
+
+
+  const [username, setUsername] = React.useState(localStorage.getItem('name') || '')
 
   const [player, setPlayer] = React.useState({
     hp: 100,
@@ -43,9 +47,10 @@ function App() {
       <div id="game-container">
         <div id="battle-container">
           {game === "start" ?
-            <StartScreen setPlayer={setPlayer} player={player} setGameState={setGameState} gameState={gameState} />
+            <StartScreen setPlayer={setPlayer} player={player} setGameState={setGameState} gameState={gameState} username={username} setUsername={setUsername} />
             : game === "fight" ?
               <React.Fragment >
+                <Head username={username}/>
                 <Enemy {...props} />
                 <Player {...props} />
                 <Attack {...props} gameState={gameState} setGameState={setGameState} setWinner={setWinner} />
