@@ -102,7 +102,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
         if (mute) attackSound("enemy")
         setPlayerTurn(!playerTurn)
         setTimeout(() => {
-            let enemyDam = Math.floor(15 + Math.random() * 20)
+            let enemyDam = Math.floor(20 + Math.random() * 20)
             let remainingHp = player.hp - enemyDam
             setMenu(true)
             setPlayer((player) => ({ ...player, hp: remainingHp < 0 ? 0 : remainingHp }))

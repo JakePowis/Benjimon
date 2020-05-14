@@ -43,7 +43,9 @@ function App() {
       <div id="game-container">
 
         {game === "start" ?
-          <StartScreen setPlayer={setPlayer} player={player} setGameState={setGameState} gameState={gameState} />
+          <div id="battle-container">
+            <StartScreen setPlayer={setPlayer} player={player} setGameState={setGameState} gameState={gameState} />
+          </div>
           : game === "fight" ?
             <div id="battle-container">
               <React.Fragment >
