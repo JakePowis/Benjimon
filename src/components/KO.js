@@ -25,12 +25,31 @@ const KO = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, 
 
     return (
         <div className="ko-container">
+            <div className="confetti"></div>
+            <div className="confetti"></div>
+            <div className="confetti"></div>
+            <div className="confetti"></div>
+            <div className="confetti"></div>
+            <div className="confetti"></div>
+            <div className="confetti"></div>
+            <div className="confetti"></div>
+            <div className="confetti"></div>
+            <div className="confetti"></div>
+            <div className="confetti"></div>
+            <div className="confetti"></div>
+
             <div className="victor-and-loser">
 
-                {winner === "PLAYER" ? <img className={(winner === "PLAYER" ? "playerwins" : "enemywins")} src={player.avatar_url} alt="player" /> : <img className={(winner === "ENEMY" ? "playerwins" : "enemywins")} src={enemy.avatar_url} alt="enemy" />}
-
-
+                <div className={"contender player1 " + (winner === "PLAYER" ? "winnerimage" : "loserimage")}>
+                    {winner === "PLAYER" ? <img src="../assets/images/trophy.svg" className="trophy" alt="trophy" /> : ""}
+                    <img src={player.avatar_url} alt="player" />
+                </div>
+                <div className={("contender enemy " + winner === "PLAYER" ? "loserimage" : "winnerimage")}>
+                {winner === "PLAYER" ? "": <img src="../assets/images/trophy.svg" className="trophy" alt="trophy" />}
+                    <img src={enemy.avatar_url} alt="enemy" />
+                </div>
             </div>
+
             {winner === "PLAYER" ? <p><b>{player.name}</b> has <span className="green">won!</span> <br /><br />{enemy.name} is defeated</p> : <p><b>{enemy.name}</b> has won!  <br /><br />{player.name} is <span className="red">defeated</span></p>}
 
             <h3 onClick={refreshgame}>Click here to start a new game</h3>
