@@ -31,13 +31,23 @@ function App() {
     diff: "Normal" //Normal, Hard
   })
 
+  const [volumeState, setVolumeState] = React.useState(0.05)
+
+  let handleKeyPress = (event) => {
+    if (event.key > 0 && event.key < 10) setVolumeState(event.key / 20)
+    else if (event.key == '0') setVolumeState(1)
+  }
+
+  document.addEventListener("keydown", handleKeyPress)
 
   const [winner, setWinner] = React.useState(null) //PLAYER or ENEMY
 
-  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner, gameState, setGameState, spr, setSpr }
+  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner, gameState, setGameState, spr, setSpr, volumeState }
 
   const game = gameState.gameState
   const round = gameState.round
+
+
 
   return (
     <div className="App">
