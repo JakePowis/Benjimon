@@ -16,8 +16,6 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
 
     let battleAudio = new Audio(battleMusic)
     battleAudio.volume = volumeState;
-    console.log("volume State is: ", volumeState);
-    console.log("battlevol is: ", battleAudio.volume);
 
     const toggleMute = () => {
 

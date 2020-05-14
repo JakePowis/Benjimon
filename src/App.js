@@ -45,7 +45,7 @@ function App() {
 
   let handleKeyPress = (event) => {
     if (event.key > 0 && event.key < 10) setVolumeState(event.key / 20)
-    else if (event.key == '0') setVolumeState(1)
+    else if (event.key === '0') setVolumeState(1)
   }
 
   const [mute, setMute] = React.useState("false")
@@ -57,10 +57,7 @@ function App() {
   const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner, gameState, setGameState, spr, setSpr, username, setUsername, volumeState, mute, setMute }
 
   const game = gameState.gameState
-  const round = gameState.round
-
-
-
+ 
 
   return (
     <div className="App">

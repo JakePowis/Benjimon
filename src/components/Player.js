@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getPokemon } from '../utils/utils'
 
 
-function Player({ player, setPlayer, enemy, setEnemy, playerTurn, spr, setSpr }) {
+function Player({ player, setPlayer, playerTurn, spr }) {
   const [data, setData] = useState(() => {
     return ""
   })
@@ -15,7 +15,6 @@ function Player({ player, setPlayer, enemy, setEnemy, playerTurn, spr, setSpr })
   }, [])
 
 
-  console.log("Player TURN", playerTurn)
 
   if (!data) return <div>Loading...</div>;
 

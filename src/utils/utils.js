@@ -3,7 +3,6 @@ const checkResponse = response => {
     console.log(`Error with the request! ${response.status}`);
     return;
   }
-  console.log(response.json);
 
   return response.json()
 }
@@ -38,7 +37,6 @@ export const getUserData = () => {
 
 
 export const gameOverCheck = ({ gameState, setGameState, player, enemy, setWinner }) => {
-  console.log("HP", enemy.hp, "MY HP", player.hp)
 
 
   if (enemy.hp <= 0) {

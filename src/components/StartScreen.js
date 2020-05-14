@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-// import AutoComplete from './Suggestion'
+import React, { useState } from 'react';
+
 
 
 const StartScreen = ({ setPlayer, setGameState, username, setUsername }) => {
@@ -9,10 +9,10 @@ const StartScreen = ({ setPlayer, setGameState, username, setUsername }) => {
 
 
 
-    const [suggestion, setSuggestion] = useState(() => {
-        return [
-            "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree", "Weedle", 'Jigglypuff', 'Pidgey', 'Magikarp', 'Meowth', 'Greninja', 'Oddish', 'Lucario', 'Mimikyu-disguised', 'Charizard-mega-x', 'Umbreon', "Geodude", "Graveler", "Golem", "Ponyta", "Rapidash", 'Sylveon', "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Poliwrath", "Abra", "Kadabra", "Alakazam", 'Gardevoir-mega', 'Gengar', "Electabuzz", "Magmar", "Gyarados", "Nidorino", "Clefairy", 'toxicroak', 'Lugia', 'Rowlet', 'Aegislash-blade', 'Chandelure', 'Pikachu', 'Eevee', 'Luxray', "Magneton", "Farfetch'd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster", "Gastly", 'Decidueye', 'Zoroark', 'Lycanroc-midday', 'corsola', 'Flygon', 'Hydreigon', 'Sceptile', 'Blaziken-mega', 'snorlax', "Dragonair", "Dragonite", "Mewtwo", "Mew"]
-    })
+
+    const suggestion = [
+        "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree", "Weedle", 'Jigglypuff', 'Pidgey', 'Magikarp', 'Meowth', 'Greninja', 'Oddish', 'Lucario', 'Mimikyu-disguised', 'Charizard-mega-x', 'Umbreon', "Geodude", "Graveler", "Golem", "Ponyta", "Rapidash", 'Sylveon', "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Poliwrath", "Abra", "Kadabra", "Alakazam", 'Gardevoir-mega', 'Gengar', "Electabuzz", "Magmar", "Gyarados", "Nidorino", "Clefairy", 'toxicroak', 'Lugia', 'Rowlet', 'Aegislash-blade', 'Chandelure', 'Pikachu', 'Eevee', 'Luxray', "Magneton", "Farfetch'd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster", "Gastly", 'Decidueye', 'Zoroark', 'Lycanroc-midday', 'corsola', 'Flygon', 'Hydreigon', 'Sceptile', 'Blaziken-mega', 'snorlax', "Dragonair", "Dragonite", "Mewtwo", "Mew"]
+
 
     const handleSubmit = e => {
         if (!value) return;
@@ -36,9 +36,9 @@ const StartScreen = ({ setPlayer, setGameState, username, setUsername }) => {
 
             <fieldset>
                 <legend className="pokeLegend">Pick a Pokemon to start</legend>
-                {username? <div>Welcome {username} </div> : <label>Your name: 
-                <input className="name-input" value={nameValue} onChange={e=> setNameValue(e.target.value)} />
-            </label>}
+                {username ? <div>Welcome {username} </div> : <label>Your name:
+                <input className="name-input" value={nameValue} onChange={e => setNameValue(e.target.value)} />
+                </label>}
                 <label htmlFor="pokemon-name"> </label>
                 <select className="choose-pokemon-input" onChange={e => setValue(e.target.value)}>
                     <option style={{ color: "grey" }}>Select</option>

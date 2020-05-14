@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import endMusic from "../assets/sound/SFX_GET_KEY_ITEM.wav"
 
 const KO = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, setGameState, setSpr, setPlayerTurn, volumeState, mute }) => {
 
-    console.log("player avatar_url = ", player);
 
     let refreshgame = () => {
         setGameState({ ...gameState, gameState: "start" })
@@ -41,14 +40,15 @@ const KO = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, 
 
             <div className="victor-and-loser">
 
-                <div className={"contender player1 " + (winner === "PLAYER" ? "winnerimage" : "loserimage")}>
-                    {winner === "PLAYER" ? <img src="../assets/images/trophy.svg" className="trophy" alt="trophy" /> : ""}
-                    <img src={player.avatar_url} alt="player" />
+               
+                <div className="contender player1 winnerimage">
+                    <img src="../assets/images/trophy.svg" className="trophy" alt="trophy" />
+                    <img src={winner === "PLAYER" ? player.avatar_url : enemy.avatar_url} alt="player" />
                 </div>
-                <div className={("contender enemy " + winner === "PLAYER" ? "loserimage" : "winnerimage")}>
-                    {winner === "PLAYER" ? "" : <img src="../assets/images/trophy.svg" className="trophy" alt="trophy" />}
-                    <img src={enemy.avatar_url} alt="enemy" />
+                <div className="contender enemy loserimage">
+                    <img src={winner === "PLAYER" ? enemy.avatar_url : player.avatar_url} alt="player" />
                 </div>
+
             </div>
 
             {winner === "PLAYER" ? <p><b>{player.name}</b> has <span className="green">won!</span> <br /><br />{enemy.name} is defeated</p> : <p><b>{enemy.name}</b> has won!  <br /><br />{player.name} is <span className="red">defeated</span></p>}
