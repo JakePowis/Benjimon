@@ -45,7 +45,7 @@ const StartScreen = ({ setPlayer, setGameState, gameState, player }) => {
 
             </fieldset>
             <br /><br /> <br />
-            <select className="choose-pokemon-input diff" onChange={handleDiffChange}>
+            <select className="choose-pokemon-input" onChange={handleDiffChange}>
                 <option value="Normal"> Normal Mode</option>
                 <option value="Hard" style={{ fontWeight: 800 }}> Hard Mode</option>
                     ))}
