@@ -25,7 +25,6 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
             battleAudio.pause();
             battleAudio.currentTime = 0;
         }
-        console.log("MUTED", mute)
 
     }
 
@@ -44,13 +43,12 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
                 setTimeout(() => hit.play(), 400)
             }, 600) // fix set time out call back
 
-            console.log("SUPPER HITTT")
+
         }
         else {
             audio = new Audio(enemySound)
             setTimeout(() => hit.play(), 1100)
         }
-        console.log("Play sound", audio)
         audio.play()
     }
 
@@ -104,6 +102,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
         setPlayerTurn(!playerTurn)
         setTimeout(() => {
             let enemyDam = Math.floor(15 + Math.random() * 20)
+            if (gameState.diff === "Hard") enemyDam = enemyDam + 10
             let remainingHp = player.hp - enemyDam
             setMenu(true)
             setPlayer((player) => ({ ...player, hp: remainingHp < 0 ? 0 : remainingHp }))
@@ -114,7 +113,6 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
         gameOverCheck({ gameState, setGameState, player, enemy, setPlayer, setEnemy, winner, setWinner })
     }, [player, enemy]);
 
-    console.log("ONLOAD", onLoad)
 
     return (
         // <button onClick={playerturn ? playerAttack : enemyAttack}>Attack</button>
