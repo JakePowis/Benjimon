@@ -1,3 +1,15 @@
+@font-face {
+  font-family: PokemonGB;
+  /* src: url(./assets/fonts/PokemonGB.ttf); */
+  src: url(./PokemonGB.ttf);
+}
+
+body {
+  font-family: PokemonGB;
+  box-sizing: border-box;
+  color: 	#303030;
+}
+
 .App {
   text-align: center;
 }

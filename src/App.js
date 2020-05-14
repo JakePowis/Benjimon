@@ -41,21 +41,19 @@ function App() {
   return (
     <div className="App">
       <div id="game-container">
-        <div id="battle-container">
-          {game === "start" ?
-            <StartScreen setPlayer={setPlayer} player={player} setGameState={setGameState} gameState={gameState} />
-            : game === "fight" ?
+
+        {game === "start" ?
+          <StartScreen setPlayer={setPlayer} player={player} setGameState={setGameState} gameState={gameState} />
+          : game === "fight" ?
+            <div id="battle-container">
               <React.Fragment >
                 <Enemy {...props} />
                 <Player {...props} />
                 <Attack {...props} gameState={gameState} setGameState={setGameState} setWinner={setWinner} />
               </React.Fragment>
-              :  //gameOver
-              <KoScreen {...props} />}
+            </div>
+            : <KoScreen {...props} />}
 
-          {/* <GameState gameState={gameState} winner={winner} setWinner={setWinner} /> */}
-          {/* <Flee player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy}/> */}
-        </div>
       </div>
     </div>
   );
