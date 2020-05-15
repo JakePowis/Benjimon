@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import endMusic from "../assets/sound/SFX_GET_KEY_ITEM.wav"
+import endMusic from "../assets/sound/finalbattle.mp3"
 
 const Win = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, setGameState, setSpr, setPlayerTurn, volumeState, mute }) => {
 
@@ -13,6 +13,7 @@ const Win = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState,
     }
 
     let endAudio = new Audio(endMusic)
+    endAudio.currentTime = 4;
     endAudio.volume = volumeState;
 
     useEffect(() => {
@@ -55,7 +56,7 @@ const Win = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState,
 
             <p style={{ margin: "3% 1%" }}>You completed the game on <span style={{ color: "blue" }}>{gameState.diff}</span> mode</p>
 
-            <h3 style={{ margin: "2%" }} onClick={refreshgame}>Return home</h3>
+            <h3 style={{ margin: "2%" }} onClick={refreshgame}>Return Home</h3>
 
         </div>
     )
