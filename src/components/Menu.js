@@ -4,6 +4,7 @@ import playerSound from "../assets/sound/SFX_SHOOTING_STAR.wav"
 import enemySound from "../assets/sound/SFX_INTRO_WHOOSH.wav"
 import hitSound from "../assets/sound/SFX_CUT.wav"
 import superSound from "../assets/sound/super.wav"
+import battleMusicxmas from "../assets/sound/xmas.mp3"
 import battleMusic from "../assets/sound/battle.mp3"
 import battleMusicEnd from "../assets/sound/darth.mp3"
 
@@ -16,7 +17,11 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
 
 
     let battleAudio = new Audio(battleMusic)
-    if (gameState.round === 5) battleAudio = new Audio(battleMusicEnd)
+    if (gameState.round === 5) {
+        battleAudio = new Audio(battleMusicxmas)
+        battleAudio.loop = true;
+    }
+    if (gameState.round === 6) battleAudio = new Audio(battleMusicEnd)
     battleAudio.volume = volumeState + 0.06;
     battleAudio.currentTime = 1;
 

@@ -6,7 +6,7 @@ const Head = ({ username, gameState }) => {
         <React.Fragment>
             <div className="welcome-message">
                 <div className="welcome"> Player: {username} </div>
-                <div>{gameState.round === 5 ? "BOSS FIGHT!!!" : "Round: " + gameState.round} </div>
+                <div>{gameState.round === 6 ? "BOSS FIGHT!!!" : "Round: " + gameState.round} </div>
             </div>
 
 

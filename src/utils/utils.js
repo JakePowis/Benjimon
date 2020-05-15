@@ -40,7 +40,7 @@ export const gameOverCheck = ({ gameState, setGameState, player, enemy, setWinne
 
   console.log("CHECK ROUND HERE & ENEMY HP", enemy.hp, gameState.round)
 
-  if (enemy.hp <= 0 && gameState.round === 5) {
+  if (enemy.hp <= 0 && gameState.round === 6) {
     setGameState({ ...gameState, gameState: "win" })
     setWinner("PLAYER")
   }

@@ -12,7 +12,8 @@ function Enemy({ enemy, setEnemy, playerTurn, spr, gameState }) {
         { name: "Scared Benji", avatar_url: "../assets/images/scared.png", hp: 40, maxHP: 40, level: 8 },
         { name: "French Benji", avatar_url: "../assets/images/french.png", hp: 65, maxHP: 65, level: 23 },
         { name: "Serial Killer Benji", avatar_url: "../assets/images/serialKiller.png", hp: 80, maxHP: 80, level: 47 },
-        { name: "Female Benji", avatar_url: "../assets/images/female.png", hp: 100, maxHP: 100, level: 60 },
+        { name: "Female Benji", avatar_url: "../assets/images/female.png", hp: 100, maxHP: 100, level: 55 },
+        { name: "xmas Benji", avatar_url: "../assets/images/xmas.png", hp: 100, maxHP: 100, level: 60 },
         { name: "Darth Sidius Benji", avatar_url: "../assets/images/darth.png", hp: 120, maxHP: 120, level: 100 }
     ]
 
