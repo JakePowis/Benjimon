@@ -8,17 +8,14 @@ const StartScreen = ({ setPlayer, setGameState, username, setUsername }) => {
 
 
 
-
-
-    const suggestion = [
-        "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree", "Weedle", 'Jigglypuff', 'Pidgey', 'Magikarp', 'Meowth', 'Greninja', 'Oddish', 'Lucario', 'Mimikyu-disguised', 'Charizard-mega-x', 'Umbreon', "Geodude", "Graveler", "Golem", "Ponyta", "Rapidash", 'Sylveon', "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Poliwrath", "Abra", "Kadabra", "Alakazam", 'Gardevoir-mega', 'Gengar', "Electabuzz", "Magmar", "Gyarados", "Nidorino", "Clefairy", 'toxicroak', 'Lugia', 'Rowlet', 'Aegislash-blade', 'Chandelure', 'Pikachu', 'Eevee', 'Luxray', "Magneton", "Farfetch'd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster", "Gastly", 'Decidueye', 'Zoroark', 'Lycanroc-midday', 'corsola', 'Flygon', 'Hydreigon', 'Sceptile', 'Blaziken-mega', 'snorlax', "Dragonair", "Dragonite", "Mewtwo", "Mew"]
+    var suggestion = ["Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Ekans", "Arbok", "Pikachu", "Raichu", "Sandshrew", "Sandslash", "Nidoran", "Nidorina", "Nidoqueen", "Nidoran", "Nidorino", "Nidoking", "Clefairy", "Clefable", "Vulpix", "Ninetales", "Jigglypuff", "Wigglytuff", "Zubat", "Golbat", "Oddish", "Gloom", "Vileplume", "Paras", "Parasect", "Venonat", "Venomoth", "Diglett", "Dugtrio", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Poliwrath", "Abra", "Kadabra", "Alakazam", "Machop", "Machoke", "Machamp", "Bellsprout", "Weepinbell", "Victreebel", "Tentacool", "Tentacruel", "Geodude", "Graveler", "Golem", "Ponyta", "Rapidash", "Slowpoke", "Slowbro", "Magnemite", "Magneton", "Farfetch'd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster", "Gastly", "Haunter", "Gengar", "Onix", "Drowzee", "Hypno", "Krabby", "Kingler", "Voltorb", "Electrode", "Exeggcute", "Exeggutor", "Cubone", "Marowak", "Hitmonlee", "Hitmonchan", "Lickitung", "Koffing", "Weezing", "Rhyhorn", "Rhydon", "Chansey", "Tangela", "Kangaskhan", "Horsea", "Seadra", "Goldeen", "Seaking", "Staryu", "Starmie", "Mr. Mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir", "Tauros", "Magikarp", "Gyarados", "Lapras", "Ditto", "Eevee", "Vaporeon", "Jolteon", "Flareon", "Porygon", "Omanyte", "Omastar", "Kabuto", "Kabutops", "Aerodactyl", "Snorlax", "Articuno", "Zapdos", "Moltres", "Dratini", "Dragonair", "Dragonite", "Mewtwo", "Mew"];
 
 
     const handleSubmit = e => {
         if (!value) return;
         setPlayer((player) => ({ ...player, name: value }))
         setUsername(nameValue || localStorage.getItem('name'))
-        setGameState((gameState) => ({ ...gameState, gameState: "fight" }))
+        setGameState((gameState) => ({ ...gameState, gameState: "intro" }))
     }
 
     const handleDiffChange = e => {
@@ -31,7 +28,7 @@ const StartScreen = ({ setPlayer, setGameState, username, setUsername }) => {
 
 
         <div className="startScreen">
-            <img src="https://fontmeme.com/permalink/200513/76b4d46ea3cad47dba7fd58af03f8544.png" alt="pokemon title" />
+            <img src="https://fontmeme.com/permalink/200515/7e82309218b5e1bb46ddc4735668fa55.png" alt="pokemon title" />
             <img src="https://fontmeme.com/permalink/200513/cab741fc2d12adebbdd05a50303f9c57.png" alt="slogan" />
 
             <fieldset>
@@ -46,7 +43,7 @@ const StartScreen = ({ setPlayer, setGameState, username, setUsername }) => {
                         <option value={pokemon.toLowerCase()} key={index}>{pokemon}</option>
                     ))}
                 </select>
-                <button type="submit" className="btn1" value="Submit" onClick={handleSubmit}>BATTLE!</button>
+                <button type="submit" className="btn1" value="Submit" onClick={handleSubmit}>PLAY!</button>
 
             </fieldset>
             <br /><br /> <br />

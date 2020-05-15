@@ -16,6 +16,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
 
     let battleAudio = new Audio(battleMusic)
     battleAudio.volume = volumeState;
+    battleAudio.currentTime = 1;
 
     const toggleMute = () => {
 
@@ -136,7 +137,7 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
                     <h3 className={spr === "used" ? "used" : ""} onClick={playerTurn ? superAttack : enemyAttack}>{menu ? "SUPER ATTACK" : "-"} </h3>
                     <h3 className={mute ? "" : "used"} onClick={toggleMute}>{mute ? "MUTE" : "MUTED"}</h3>
                     <h3 onClick={() => {
-                        setGameState({ ...gameState, gameState: "start" })
+                        setGameState({ ...gameState, gameState: "start", round: 1 })
                         setPlayer({ ...player, hp: 100 })
                         setEnemy({ ...enemy, hp: 100 })
                         setPlayerTurn(true)

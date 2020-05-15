@@ -1,22 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { getPokemon } from '../utils/utils'
-
-
-function Player({ player, setPlayer, playerTurn, spr }) {
-  const [data, setData] = useState(() => {
-    return ""
-  })
-
-  useEffect(() => {
-    getPokemon(player.name).then((data) => {
-      setData(data)
-      setPlayer(() => ({ ...player, avatar_url: data.sprites.front_default }))
-    })
-  }, [])
 
 
 
-  if (!data) return <div>Loading...</div>;
+function Player({ player, setPlayer, playerTurn, spr, data, setData }) {
+
+
 
   return (
 
@@ -30,7 +18,7 @@ function Player({ player, setPlayer, playerTurn, spr }) {
       <div className="character-stats">
         <div className="name-level">
           <h2 className="name">{data.name}</h2>
-          <h2>Lv10</h2>
+          <h2>Lv60</h2>
         </div>
         <div className="bar">
           HP<progress value={player.hp} max="100">0%</progress>

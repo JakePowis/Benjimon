@@ -38,13 +38,19 @@ export const getUserData = () => {
 
 export const gameOverCheck = ({ gameState, setGameState, player, enemy, setWinner }) => {
 
+  console.log("CHECK ROUND HERE & ENEMY HP", enemy.hp, gameState.round)
 
-  if (enemy.hp <= 0) {
-    setGameState({ ...gameState, gameState: "GameOver" })
+  if (enemy.hp <= 0 && gameState.round === 5) {
+    setGameState({ ...gameState, gameState: "win" })
     setWinner("PLAYER")
   }
-  if (player.hp <= 0) {
-    setGameState({ ...gameState, gameState: "GameOver" })
+  else if (enemy.hp <= 0) {
+    setGameState({ ...gameState, gameState: "next" })
+    console.log("GOING TO nEXT OAGE")
+    setWinner("PLAYER")
+  }
+  else if (player.hp <= 0) {
+    setGameState({ ...gameState, gameState: "gameover" })
     setWinner("ENEMY")
   }
 

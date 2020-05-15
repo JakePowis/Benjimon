@@ -212,7 +212,44 @@ fieldset {
  
   .welcome-message {
     margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
   }
+
+
+
 .pokeLegend {
   letter-spacing: 2px;
+}
+
+
+.visible {
+
+  display: none;
+
+}
+
+.introImg {
+
+  height: 220px !important;
+  width: 180px !important;
+}
+
+
+.intro1 {
+
+  padding: 8% 8% 0% 8%;
+
+}
+
+.intro2 {
+
+  padding: 0% 8% 0% 8%;
+
+}
+
+
+.next {
+  cursor: pointer;
+  box-shadow: 5px 5px 10px rgb(53, 53, 53);
 }

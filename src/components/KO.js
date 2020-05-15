@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import endMusic from "../assets/sound/SFX_GET_KEY_ITEM.wav"
+import endMusic from "../assets/sound/map.mp3"
 
 const KO = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, setGameState, setSpr, setPlayerTurn, volumeState, mute }) => {
 
 
     let refreshgame = () => {
-        setGameState({ ...gameState, gameState: "start" })
+        setGameState({ ...gameState, gameState: "start", round: 1 })
         setPlayer({ ...player, hp: 100 })
         setEnemy({ ...enemy, hp: 100 })
         setPlayerTurn(true)
@@ -13,6 +13,7 @@ const KO = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, 
     }
 
     let endAudio = new Audio(endMusic)
+    endAudio.currentTime = 1;
     endAudio.volume = volumeState;
 
     useEffect(() => {
@@ -25,35 +26,23 @@ const KO = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, 
 
     return (
         <div className="ko-container">
-            <div className="confetti"></div>
-            <div className="confetti"></div>
-            <div className="confetti"></div>
-            <div className="confetti"></div>
-            <div className="confetti"></div>
-            <div className="confetti"></div>
-            <div className="confetti"></div>
-            <div className="confetti"></div>
-            <div className="confetti"></div>
-            <div className="confetti"></div>
-            <div className="confetti"></div>
-            <div className="confetti"></div>
+
 
             <div className="victor-and-loser">
 
-               
+
                 <div className="contender player1 winnerimage">
-                    <img src="../assets/images/trophy.svg" className="trophy" alt="trophy" />
-                    <img src={winner === "PLAYER" ? player.avatar_url : enemy.avatar_url} alt="player" />
+                    <img src={enemy.avatar_url} alt="player" />
                 </div>
                 <div className="contender enemy loserimage">
-                    <img src={winner === "PLAYER" ? enemy.avatar_url : player.avatar_url} alt="player" />
+                    <img src={player.avatar_url} alt="player" />
                 </div>
 
             </div>
 
-            {winner === "PLAYER" ? <p><b>{player.name}</b> has <span className="green">won!</span> <br /><br />{enemy.name} is defeated</p> : <p><b>{enemy.name}</b> has won!  <br /><br />{player.name} is <span className="red">defeated</span></p>}
+            <p>You got rekt, son. {enemy.name} is victorious!</p>
 
-            <h3 onClick={refreshgame}>Click here to start a new game</h3>
+            <h3 onClick={refreshgame}>Click here to start a new game, and comtemplate your failure</h3>
 
         </div>
     )

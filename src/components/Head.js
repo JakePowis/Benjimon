@@ -1,11 +1,16 @@
 import React from 'react'
 
-const Head = ({username}) => {
-    
+const Head = ({ username, gameState }) => {
+
     return (
-        <div className="welcome-message">
-            Happy Gaming {username}
-        </div>
+        <React.Fragment>
+            <div className="welcome-message">
+                <div className="welcome"> Player: {username} </div>
+                <div>{gameState.round === 5 ? "BOSS FIGHT!!!" : "Round: " + gameState.round} </div>
+            </div>
+
+
+        </React.Fragment>
     )
 }
 
