@@ -40,7 +40,10 @@ const KO = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, 
 
             </div>
 
-            <p>You got rekt, son. {enemy.name} is victorious!</p>
+            <p>You got rekt, son.</p>
+            <br />
+
+            <p> {enemy.name} is victorious!</p>
 
             <h3 onClick={refreshgame}>Click here to start a new game, and comtemplate your failure</h3>
 

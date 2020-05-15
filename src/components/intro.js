@@ -68,11 +68,14 @@ const Intro = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameStat
             <div className={you ? "intro1" : "intro1 visible"}>
                 <div> {player.name}, i choose you!!</div>
                 <img className="introImg" src={player.avatar_url} alt="player" />
+
             </div>
 
             <div className={btn ? "intro2" : "intro2 visible"}>
-                <button type="submit" className="btn1" value="Submit" onClick={handleSubmit}>BATTLE!</button>
+                {player.name === "jigglypuff" ? <div><i>bad choice, jigglypuff sucks balls</i></div> : <div></div>}
+                <div class="pokebola tooltip" onClick={handleSubmit}><span className="tooltiptext">battle</span></div>
             </div>
+
 
 
 

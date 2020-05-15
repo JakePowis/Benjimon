@@ -49,11 +49,13 @@ const Win = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState,
 
             </div>
 
-            <p> Congratulations, you have defeated all of the evil evil Benjis!</p>
+            <p style={{ margin: "1% 1% 3% 1%" }}> Congratulations, you have defeated all of the evil evil Benjis!</p>
 
-            <p> The world is now a much, much safer place</p>
+            <p style={{ margin: "3% 1%" }}> The world is now a much, much safer place</p>
 
-            <h3 onClick={refreshgame}>Home</h3>
+            <p style={{ margin: "3% 1%" }}>You completed the game on <span style={{ color: "blue" }}>{gameState.diff}</span> mode</p>
+
+            <h3 style={{ margin: "2%" }} onClick={refreshgame}>Return home</h3>
 
         </div>
     )

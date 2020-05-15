@@ -26,12 +26,12 @@ function App() {
   const [player, setPlayer] = React.useState({
     hp: 100,
     name: "pikachu",
-    avatar_url: "https://avatars2.githubusercontent.com/u/51966598?s=460&u=9fda51179cc2ce2e7a37d0abe91bcd2e206e5423&v=4"
+    avatar_url: ""
   })
   const [enemy, setEnemy] = React.useState({
     hp: 100,
     name: "enemy",
-    avatar_url: "https://avatars2.githubusercontent.com/u/51966598?s=460&u=9fda51179cc2ce2e7a37d0abe91bcd2e206e5423&v=4"
+    avatar_url: ""
   })
 
   const [playerTurn, setPlayerTurn] = React.useState(true)
@@ -43,7 +43,7 @@ function App() {
   })
 
   const [gameState, setGameState] = React.useState({
-    gameState: "start", //start, fight, next, gameover, win
+    gameState: "start", //start, intro, fight, next, gameover, win
     round: 1,
     diff: "Normal" //Normal, Hard
   })

@@ -78,6 +78,8 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
             if (onLoad) setOnLoad(false)
             let playerDam = ""
             playerDam = Math.floor(10 + Math.random() * 20)
+            if (player.name === "magikarp") playerDam += 50
+            if (player.name === "jigglypuff") playerDam = 1
             let remainingHp = enemy.hp - playerDam
             setMenu(false)
             setEnemy((enemy) => ({ ...enemy, hp: remainingHp < 0 ? 0 : remainingHp }))
@@ -108,8 +110,8 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
         if (mute) attackSound("enemy")
         setPlayerTurn(!playerTurn)
         setTimeout(() => {
-            let enemyDam = Math.floor(15 + Math.random() * 20)
-            if (gameState.diff === "Hard") enemyDam = enemyDam + 10
+            let enemyDam = Math.floor(10 + Math.random() * 30)
+            if (gameState.diff === "Hard") enemyDam = enemyDam + 5
             let remainingHp = player.hp - enemyDam
             setMenu(true)
             setPlayer((player) => ({ ...player, hp: remainingHp < 0 ? 0 : remainingHp }))

@@ -55,7 +55,10 @@ const Next = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState
 
             <p>You have defeated {enemy.name}!!!!!!</p>
 
-            <p className="next" onClick={refreshgame}>Click to fight the next evil Benji</p>
+            <p>Time to take on the next Benji...</p>
+
+
+            <div class="pokebola2 tooltip2" onClick={refreshgame}><span className="tooltiptext2">battle</span></div>
 
         </div>
     )
