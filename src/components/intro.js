@@ -36,14 +36,14 @@ const Intro = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameStat
     useEffect(() => {
         const timer = setTimeout(() => {
             setYou(true)
-        }, 3000);
+        }, 4000);
         return () => clearTimeout(timer);
     }, []);
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setBtn(true)
-        }, 5000);
+        }, 8000);
         return () => clearTimeout(timer);
     }, []);
 

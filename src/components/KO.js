@@ -45,7 +45,7 @@ const KO = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, 
 
             <p> {enemy.name} is victorious!</p>
 
-            <h3 onClick={refreshgame}>Click here to start a new game, and comtemplate your failure</h3>
+            <h3 onClick={refreshgame}>Benjis now rule the world, click here to try again to stop them</h3>
 
         </div>
     )
