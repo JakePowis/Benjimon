@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 
 
-function Player({ player, setPlayer, playerTurn, spr, data, setData }) {
+function Player({ player, setPlayer, playerTurn, spr, data, setData, onLoad }) {
 
 
 
@@ -11,7 +11,7 @@ function Player({ player, setPlayer, playerTurn, spr, data, setData }) {
     <div id="player-container">
       <div className={"pokemon-display " + (spr === "used" ? "sprAtk" : "")}>
 
-        <img className={"player " + (playerTurn ? "hit" : "playeratk")} src={data.sprites.back_default ? data.sprites.back_default : data.sprites.front_default} alt={`${data.name} default sprite`} />
+        <img className={"player " + (onLoad ? "" : playerTurn ? "hit" : "playeratk")} src={data.sprites.back_default ? data.sprites.back_default : data.sprites.front_default} alt={`${data.name} default sprite`} />
 
         <div className="grey-oval"></div>
       </div>

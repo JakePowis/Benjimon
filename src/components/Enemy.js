@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getUserData } from '../utils/utils'
 
-function Enemy({ enemy, setEnemy, playerTurn, spr, gameState }) {
+function Enemy({ enemy, setEnemy, playerTurn, spr, gameState, onLoad }) {
 
 
     const [user, setUser] = useState(() => {
@@ -9,12 +9,12 @@ function Enemy({ enemy, setEnemy, playerTurn, spr, gameState }) {
     })
 
     const benjis = [
-        { name: "Scared Benji", avatar_url: "../assets/images/scared.png", hp: 40, maxHP: 40, level: 8 },
+        { name: "Terrified Benji", avatar_url: "../assets/images/scared.png", hp: 40, maxHP: 40, level: 8 },
         { name: "French Benji", avatar_url: "../assets/images/french.png", hp: 65, maxHP: 65, level: 23 },
         { name: "Serial Killer Benji", avatar_url: "../assets/images/serialKiller.png", hp: 80, maxHP: 80, level: 47 },
         { name: "Female Benji", avatar_url: "../assets/images/female.png", hp: 100, maxHP: 100, level: 55 },
-        { name: "xmas Benji", avatar_url: "../assets/images/xmas.png", hp: 100, maxHP: 100, level: 60 },
-        { name: "Darth Sidius Benji", avatar_url: "../assets/images/darth.png", hp: 120, maxHP: 120, level: 100 }
+        { name: "Xmas Benji", avatar_url: "../assets/images/xmas.png", hp: 100, maxHP: 100, level: 60 },
+        { name: "Darth Sidius Benji", avatar_url: "../assets/images/darthBenji.png", hp: 120, maxHP: 120, level: 100 }
     ]
 
 
@@ -48,7 +48,7 @@ function Enemy({ enemy, setEnemy, playerTurn, spr, gameState }) {
                 </div>
             </div>
             <div className={"pokemon-display " + (spr === "used" ? "spr" : "")}>
-                <img className={"enemy-pokemon " + (!playerTurn ? "hit" : "enemyatk")} src={enemy.avatar_url} />
+                <img className={"enemy-pokemon " + (onLoad ? "" : !playerTurn ? "hit" : "enemyatk")} src={enemy.avatar_url} />
                 <div className="grey-oval"></div>
             </div>
         </div>

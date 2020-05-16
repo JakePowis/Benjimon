@@ -8,12 +8,11 @@ import battleMusicxmas from "../assets/sound/xmas.mp3"
 import battleMusic from "../assets/sound/battle.mp3"
 import battleMusicEnd from "../assets/sound/darth.mp3"
 
-export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameState, winner, setWinner, playerTurn, setPlayerTurn, spr, setSpr, volumeState, mute, setMute }) {
+export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameState, winner, setWinner, playerTurn, setPlayerTurn, spr, setSpr, volumeState, mute, setMute, onLoad, setOnLoad }) {
 
 
 
     const [menu, setMenu] = useState("false")
-    const [onLoad, setOnLoad] = useState("true")
 
 
     let battleAudio = new Audio(battleMusic)
@@ -81,8 +80,8 @@ export function Attack({ player, setPlayer, enemy, setEnemy, gameState, setGameS
     const playerAttack = () => {
         if (mute) attackSound("player")
         setPlayerTurn(!playerTurn)
+        if (onLoad) setOnLoad(false)
         setTimeout(() => {
-            if (onLoad) setOnLoad(false)
             let playerDam = ""
             playerDam = Math.floor(10 + Math.random() * 20)
             if (player.name === "magikarp") playerDam += 50

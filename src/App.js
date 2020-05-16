@@ -36,6 +36,8 @@ function App() {
 
   const [playerTurn, setPlayerTurn] = React.useState(true)
 
+  const [onLoad, setOnLoad] = React.useState("true")
+
   const [spr, setSpr] = React.useState("ready") //state for super
 
   const [data, setData] = React.useState(() => {
@@ -61,7 +63,7 @@ function App() {
 
   const [winner, setWinner] = React.useState(null) //PLAYER or ENEMY
 
-  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner, gameState, setGameState, spr, setSpr, username, setUsername, volumeState, mute, setMute, data, setData }
+  const props = { player, setPlayer, enemy, setEnemy, playerTurn, setPlayerTurn, winner, setWinner, gameState, setGameState, spr, setSpr, username, setUsername, volumeState, mute, setMute, data, setData, onLoad, setOnLoad }
 
   const game = gameState.gameState
 

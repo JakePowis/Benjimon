@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import endMusic from "../assets/sound/finalbattle.mp3"
 
-const Win = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, setGameState, setSpr, setPlayerTurn, volumeState, mute }) => {
+const Win = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, setGameState, setSpr, setPlayerTurn, volumeState, mute, setOnLoad }) => {
 
 
     let refreshgame = () => {
@@ -10,6 +10,7 @@ const Win = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState,
         setEnemy({ ...enemy, hp: 100 })
         setPlayerTurn(true)
         setSpr("ready")
+        setOnLoad(true)
     }
 
     let endAudio = new Audio(endMusic)

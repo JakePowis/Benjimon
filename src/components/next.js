@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import endMusic from "../assets/sound/SFX_GET_KEY_ITEM.wav"
 
-const Next = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, setGameState, setSpr, setPlayerTurn, volumeState, mute }) => {
+const Next = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState, setGameState, setSpr, setPlayerTurn, volumeState, mute, onLoad, setOnLoad }) => {
 
 
     let refreshgame = () => {
@@ -10,6 +10,7 @@ const Next = ({ player, setPlayer, enemy, setEnemy, winner, setWinner, gameState
         setEnemy({ ...enemy, hp: 100 })
         setPlayerTurn(true)
         setSpr("ready")
+        setOnLoad(true)
     }
 
     console.log("round is", gameState.round)
