@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-
+import playerSound from "../assets/sound/SFX_SHOOTING_STAR.wav"
+import enemySound from "../assets/sound/SFX_INTRO_WHOOSH.wav"
+import hitSound from "../assets/sound/SFX_CUT.wav"
+import superSound from "../assets/sound/super.wav"
 
 
 const StartScreen = ({ setPlayer, setGameState, username, setUsername }) => {
